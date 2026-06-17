@@ -97,6 +97,19 @@
     transition:all .3s; text-transform:uppercase;}
   .nav-cta:hover{background:var(--ink); color:var(--bg);}
 
+  /* ===== LANG TOGGLE ===== */
+  .lang-toggle{display:inline-flex; gap:2px; align-items:center;
+    margin-right:18px; font-family:var(--sans);}
+  .lang-toggle button{background:transparent; border:none;
+    color:var(--ink-soft); font-size:11.5px; font-weight:500;
+    letter-spacing:.15em; cursor:pointer; padding:6px 8px;
+    transition:color .25s;}
+  .lang-toggle button.active{color:var(--ink);}
+  .lang-toggle .sep{color:var(--ink-muted); font-size:11px;}
+  .nav.on-dark .lang-toggle button{color:rgba(253,251,247,.55);}
+  .nav.on-dark .lang-toggle button.active{color:var(--bg);}
+  .nav.on-dark .lang-toggle .sep{color:rgba(253,251,247,.3);}
+
   /* ===== HERO ===== */
   .hero{position:relative; height:100vh; min-height:820px;
     display:flex; align-items:flex-end;
@@ -433,13 +446,18 @@
       </div>
     </a>
     <div class="nav-links">
-      <a href="boppartdigital.html" class="active">Studio</a>
-      <a href="boppart_about.html">About</a>
-      <a href="boppart_studio.html">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
+      <a href="boppartdigital.html" class="active" data-en="Studio" data-de="Studio">Studio</a>
+      <a href="boppart_about.html" data-en="About" data-de="Über uns">About</a>
+      <a href="boppart_studio.html" data-en="Services" data-de="Leistungen">Services</a>
+      <a href="#portfolio" data-en="Portfolio" data-de="Portfolio">Portfolio</a>
+      <a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta">Get in touch</a>
+    <div class="lang-toggle">
+      <button data-lang="en" class="active">EN</button>
+      <span class="sep">·</span>
+      <button data-lang="de">DE</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-en="Get in touch" data-de="Kontakt aufnehmen">Get in touch</a>
   </div>
 </nav>
 
@@ -449,13 +467,13 @@
   <div class="hero-content">
     <div class="hero-meta">
       <div class="hero-meta-line"></div>
-      <div class="hero-meta-text">AI Operating Studio · Zürich · est. 2022</div>
+      <div class="hero-meta-text" data-en="AI Operating Studio · Zürich · est. 2022" data-de="AI Operating Studio · Zürich · gegr. 2022">AI Operating Studio · Zürich · est. 2022</div>
     </div>
-    <h1>The portfolio for the<br><span class="accent">next decade.</span></h1>
-    <p class="hero-sub">">We don't build websites. We build self-running operations — tailored to you, operating without you.</p>
+    <h1 data-en-html="The portfolio for the<br><span class=&quot;accent&quot;>next decade.</span>" data-de-html="Das Portfolio für das<br><span class=&quot;accent&quot;>nächste Jahrzehnt.</span>">The portfolio for the<br><span class="accent">next decade.</span></h1>
+    <p class="hero-sub" data-en="&quot;>We don't build websites. We build self-running operations — tailored to you, operating without you." data-de="&quot;>Wir bauen keine Websites. Wir bauen selbstlaufende Prozesse — massgeschneidert, die auch ohne dich funktionieren.">">We don't build websites. We build self-running operations — tailored to you, operating without you.</p>
     <div class="hero-ctas">
-      <a href="#portfolio" class="btn-primary">Our Ventures</a>
-      <a href="boppart_studio.html" class="btn-ghost-light">Work With Us</a>
+      <a href="#portfolio" class="btn-primary" data-en="Our Ventures" data-de="Unsere Ventures">Our Ventures</a>
+      <a href="boppart_studio.html" class="btn-ghost-light" data-en="Work With Us" data-de="Zusammenarbeit">Work With Us</a>
     </div>
   </div>
 </section>
@@ -690,16 +708,16 @@
       <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, those who think long-term.</p>
     </div>
     <div class="footer-col">
-      <h5>Studio</h5>
+      <h5 data-en="Studio" data-de="Studio">Studio</h5>
       <ul>
-        <li><a href="boppartdigital.html">Home</a></li>
-        <li><a href="boppart_about.html">About Michaela</a></li>
-        <li><a href="boppart_studio.html">Services & Studio</a></li>
-        <li><a href="boppart_portfolio.html">Portfolio</a></li>
+        <li><a href="boppartdigital.html" data-en="Home" data-de="Home">Home</a></li>
+        <li><a href="boppart_about.html" data-en="About Michaela" data-de="Über Michaela">About Michaela</a></li>
+        <li><a href="boppart_studio.html" data-en="Services &amp; Studio" data-de="Leistungen &amp; Studio">Services &amp; Studio</a></li>
+        <li><a href="boppart_portfolio.html" data-en="Portfolio" data-de="Portfolio">Portfolio</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Connect</h5>
+      <h5 data-en="Connect" data-de="Kontakt">Connect</h5>
       <ul>
         <li><a href="mailto:welcome@boppartdigital.com">Email</a></li>
         <li><a href="https://linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn &middot; Michaela</a></li>
@@ -709,22 +727,23 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Legal</h5>
+      <h5 data-en="Legal" data-de="Rechtliches">Legal</h5>
       <ul>
-        <li><a href="boppart_imprint.html">Imprint</a></li>
-        <li><a href="boppart_imprint.html#data-protection">Privacy</a></li>
-        <li><a href="boppart_imprint.html#terms">Terms</a></li>
-        <li><a href="boppart_imprint.html#copyright">Copyright</a></li>
+        <li><a href="boppart_imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a></li>
+        <li><a href="boppart_imprint.html#data-protection" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+        <li><a href="boppart_imprint.html#terms" data-en="Terms" data-de="AGB">Terms</a></li>
+        <li><a href="boppart_imprint.html#copyright" data-en="Copyright" data-de="Copyright">Copyright</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Boppart Digital &middot; Zurich, Switzerland</span>
-    <span>Designed and built in-house</span>
+    <span data-en="Designed and built in-house" data-de="Inhouse entworfen und gebaut">Designed and built in-house</span>
   </div>
 </footer>
 
 <script>
+  // Nav scroll behavior
   const nav = document.getElementById('nav');
   if(nav){
     window.addEventListener('scroll', () => {
@@ -732,6 +751,30 @@
       else nav.classList.remove('scrolled');
     });
   }
+
+  // i18n DE/EN toggle
+  function setLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if(txt !== null) el.textContent = txt;
+    });
+    document.querySelectorAll('[data-en-html]').forEach(el => {
+      const html = el.getAttribute('data-' + lang + '-html');
+      if(html !== null) el.innerHTML = html;
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('bopplang', lang); } catch(e){}
+    document.documentElement.lang = lang;
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
+  });
+  try {
+    const saved = localStorage.getItem('bopplang');
+    if(saved === 'de') setLang('de');
+  } catch(e){}
 </script>
 
 </body>
