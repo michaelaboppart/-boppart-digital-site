@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services · Boppart Digital — Platform Studio · AI Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Platform Studio · AI Consulting. Senior operator-led services from Boppart Digital, Zürich.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fdfbf7;
+    --bg-soft:#f4f0e8;
+    --bg-deeper:#ebe4d4;
+    --ink:#1a1a1f;
+    --ink-soft:#3a3a44;
+    --ink-dim:#6a6a6a;
+    --ink-muted:#9a9890;
+    --champagne:#b8a468;
+    --champagne-deep:#8a7847;
+    --orange:#d97742;
+    --steel:#5c8aa8;
+    --line:rgba(26,26,31,.1);
+    --line-soft:rgba(26,26,31,.05);
+    --serif:'Fraunces', Georgia, serif;
+    --display:'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *,*:before,*:after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased; line-height:1.65;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes slowZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+
+  /* ===== NAV (same pattern) ===== */
+  .nav{position:fixed; top:0; left:0; right:0; z-index:100;
+    background:transparent; padding:28px 0;
+    transition:all .4s cubic-bezier(.22,.61,.36,1);}
+  .nav.scrolled{padding:16px 0; background:rgba(253,251,247,.95);
+    backdrop-filter:blur(24px); border-bottom:1px solid var(--line-soft);}
+  .nav.on-dark .nav-links a,
+  .nav.on-dark .nav-brand-text,
+  .nav.on-dark .nav-cta{color:var(--bg);}
+  .nav.on-dark .nav-cta{border-color:var(--bg);}
+  .nav.on-dark .nav-cta:hover{background:var(--bg); color:var(--ink);}
+  .nav-inner{max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; align-items:center; gap:48px;}
+  .nav-brand{display:flex; align-items:center; gap:14px;}
+  .nav-brand-mark{width:64px; height:64px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.30));
+    position:relative; transition:transform .3s;}
+  .nav-brand-mark:hover{transform:scale(1.04);}
+  .nav-brand-mark img{display:none;}
+  .nav-brand-text,.nav-brand-sub{display:none;}
+  .nav.on-dark .nav-brand-mark{filter:drop-shadow(0 2px 14px rgba(0,0,0,.6));}
+  .nav-brand-text{font-family:var(--serif); font-weight:500; font-size:20px;
+    letter-spacing:-.02em; color:var(--ink); transition:color .3s;}
+  .nav-brand-text .tm{font-size:9px; vertical-align:super; color:var(--ink-muted);}
+  .nav-brand-sub{font-family:var(--sans); font-size:9.5px; font-weight:500;
+    letter-spacing:.35em; color:var(--champagne); text-transform:uppercase; margin-top:2px;}
+  .nav-links{display:flex; gap:36px; flex:1; justify-content:center;}
+  .nav-links a{font-size:13.5px; color:var(--ink-soft); position:relative;
+    letter-spacing:.01em; transition:color .3s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active:after{content:""; position:absolute; bottom:-6px; left:0; right:0;
+    height:1px; background:var(--champagne);}
+  .nav-cta{padding:11px 24px; border-radius:100px; background:transparent; border:1px solid var(--ink);
+    color:var(--ink); font-size:12.5px; font-weight:500; letter-spacing:.05em;
+    transition:all .3s; text-transform:uppercase;}
+  .nav-cta:hover{background:var(--ink); color:var(--bg);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative; height:80vh; min-height:680px;
+    display:flex; align-items:flex-end; padding:0 0 120px; overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:url('bridge-vascodagama.jpg') center/cover no-repeat, linear-gradient(135deg,#1a1a1f 0%,#3a3a44 100%);
+    animation:slowZoom 16s ease-out forwards;
+    filter:saturate(1.05) brightness(.92);}
+  .hero-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(26,26,31,.20) 0%, rgba(26,26,31,.45) 55%, rgba(26,26,31,.92) 100%);}
+  .hero-content{position:relative; z-index:2; max-width:1320px; width:100%;
+    margin:0 auto; padding:0 48px; color:var(--bg);
+    animation:fadeUp 1.5s .3s both;}
+  .hero-meta{display:flex; align-items:center; gap:14px; margin-bottom:32px;}
+  .hero-meta-line{width:36px; height:1px; background:var(--champagne);}
+  .hero-meta-text{font-family:var(--sans); font-size:11.5px; color:var(--champagne);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:500;}
+  h1{font-family:var(--display); font-weight:200;
+    font-size:clamp(56px, 8vw, 130px); line-height:.95; letter-spacing:-.045em;
+    margin:0 0 32px; max-width:1100px; color:var(--bg);}
+  h1 .accent{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .hero-sub{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:clamp(18px, 1.5vw, 22px); color:var(--bg-soft); max-width:680px;
+    line-height:1.5; margin:0;}
+
+  /* ===== SECTION ===== */
+  section{position:relative; padding:160px 48px;}
+  .container{max-width:1320px; margin:0 auto;}
+  .container-narrow{max-width:980px; margin:0 auto;}
+  .sec-meta{display:flex; align-items:center; gap:14px; margin-bottom:40px;}
+  .sec-meta-line{width:24px; height:1px; background:var(--champagne);}
+  .sec-meta-text{font-family:var(--sans); font-size:11px; color:var(--champagne-deep);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:600;}
+  h2{font-family:var(--display); font-weight:200;
+    font-size:clamp(40px, 5.4vw, 84px); line-height:1.02; letter-spacing:-.035em;
+    margin:0 0 32px;}
+  h2 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .sec-sub{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(18px, 1.4vw, 22px); color:var(--ink-soft); line-height:1.55;
+    max-width:720px; margin:0 0 64px;}
+
+  /* ===== SERVICE BLOCK ===== */
+  .service-block{padding:180px 48px;}
+  .service-block.alt{background:var(--bg-soft);}
+  .service-grid{display:grid; grid-template-columns:1fr 1fr; gap:120px; align-items:start;}
+  .service-grid.reverse{direction:rtl;}
+  .service-grid.reverse > *{direction:ltr;}
+  .service-num-block{padding-top:18px;}
+  .service-num{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:120px; color:var(--champagne); line-height:1; margin-bottom:32px;
+    letter-spacing:-.02em;}
+  .service-block h2{margin-bottom:24px;}
+  .service-meta{font-family:var(--sans); font-size:12px; color:var(--champagne-deep);
+    letter-spacing:.25em; text-transform:uppercase; margin-bottom:32px;
+    font-weight:600; display:flex; align-items:center; gap:14px;}
+  .service-meta .dot{width:6px; height:6px; border-radius:50%; background:var(--champagne);}
+  .service-text p{font-size:17px; line-height:1.75; color:var(--ink-soft);
+    margin:0 0 24px; font-weight:400;}
+  .service-text p:first-child{font-family:var(--serif); font-size:21px;
+    line-height:1.55; color:var(--ink); font-weight:300; margin-bottom:32px;}
+  .service-text p strong{color:var(--champagne-deep); font-weight:500;}
+
+  .service-list{margin-top:32px; padding-top:32px; border-top:1px solid var(--line);}
+  .service-list h5{font-family:var(--sans); font-size:11px; font-weight:600;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase;
+    margin:0 0 24px;}
+  .service-list ul{list-style:none; padding:0; margin:0;}
+  .service-list ul li{padding:14px 0; border-bottom:1px solid var(--line-soft);
+    font-size:15.5px; color:var(--ink-soft); display:grid; grid-template-columns:1fr auto;
+    gap:24px; align-items:baseline;}
+  .service-list ul li:last-child{border-bottom:none;}
+  .service-list ul li strong{color:var(--ink); font-weight:500;}
+  .service-list ul li .price{font-family:var(--serif); font-style:italic;
+    font-size:16px; color:var(--champagne-deep); font-weight:500;}
+
+  .service-cta{margin-top:48px; padding-top:40px; border-top:1px solid var(--line);}
+  .service-cta a{font-family:var(--sans); padding:16px 32px; border-radius:100px;
+    background:var(--ink); color:var(--bg); font-size:12.5px;
+    font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:14px;
+    transition:all .25s;}
+  .service-cta a:hover{background:var(--champagne-deep); transform:translateY(-2px);}
+
+  /* ===== PROCESS SECTION ===== */
+  .process{background:var(--bg-soft); padding:200px 48px;}
+  .process h2{text-align:center; max-width:1000px; margin:0 auto 80px;}
+  .process-steps{display:grid; grid-template-columns:repeat(4, 1fr); gap:48px;}
+  .process-step{padding:48px 0; border-top:1px solid var(--line);}
+  .process-step-num{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:14px; color:var(--champagne); margin-bottom:24px; letter-spacing:.15em;}
+  .process-step h4{font-family:var(--serif); font-weight:400; font-size:26px;
+    letter-spacing:-.01em; margin:0 0 18px; color:var(--ink);}
+  .process-step .duration{font-family:var(--sans); font-size:11px;
+    color:var(--ink-muted); letter-spacing:.2em; text-transform:uppercase;
+    margin-bottom:20px; font-weight:500;}
+  .process-step p{font-size:15px; line-height:1.7; color:var(--ink-soft);
+    margin:0; font-weight:400;}
+
+  /* ===== FAQ ===== */
+  .faq{padding:200px 48px;}
+  .faq-grid{display:grid; grid-template-columns:1fr 1.5fr; gap:120px; align-items:start;}
+  .faq-items{display:flex; flex-direction:column;}
+  .faq-item{padding:36px 0; border-top:1px solid var(--line);}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h4{font-family:var(--serif); font-weight:400; font-size:22px;
+    margin:0 0 18px; letter-spacing:-.005em; color:var(--ink);}
+  .faq-item p{font-size:15.5px; color:var(--ink-soft); line-height:1.75;
+    margin:0; font-weight:400; max-width:680px;}
+
+  /* ===== CTA SECTION ===== */
+  .cta-final{padding:160px 48px 200px; position:relative; background:var(--bg-soft);}
+  .cta-bg{display:none;}
+  .cta-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(20,24,31,.8) 0%, rgba(20,24,31,.45) 50%, rgba(20,24,31,.6) 100%);}
+  .cta-content{position:relative; z-index:2;
+    max-width:1320px; margin:0 auto;
+    color:var(--ink); text-align:center;}
+  .cta-content .sec-meta{justify-content:center;}
+  .cta-content h2{max-width:760px; color:var(--ink); margin:0 auto 32px;}
+  .cta-content p{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:22px; color:var(--ink-soft); max-width:560px; line-height:1.6;
+    margin:0 auto 40px;}
+  .cta-content .email{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(24px, 3vw, 40px); color:var(--ink);
+    border-bottom:1px solid var(--champagne); padding-bottom:8px;
+    display:inline-block;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:64px 48px 40px; background:var(--bg-deeper);
+    border-top:1px solid var(--line);}
+  .footer-inner{max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns:1.6fr 1fr 1.1fr 1fr; gap:56px;
+    margin-bottom:48px; align-items:start;}
+  .footer-brand-block .footer-brand{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .footer-brand-block .mark{width:56px; height:56px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.15));}
+  .footer-brand-block .name{display:none; font-family:var(--serif); font-weight:500; font-size:18px;}
+  .footer-brand-block p{font-size:13.5px; color:var(--ink-dim); line-height:1.65; max-width:300px;}
+  .footer-col h5{font-family:var(--sans); font-size:11px; font-weight:700;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase; margin:0 0 20px;}
+  .footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:11px;}
+  .footer-col ul li a{font-size:13.5px; color:var(--ink-soft); transition:color .2s;}
+  .footer-col ul li a:hover{color:var(--champagne-deep);}
+  .footer-bottom{max-width:1320px; margin:0 auto; padding-top:32px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--sans); font-size:11.5px; color:var(--ink-muted);
+    letter-spacing:.05em; flex-wrap:wrap; gap:16px;}
+
+  /* MOBILE */
+  @media (max-width:1024px){
+    .service-grid{grid-template-columns:1fr; gap:48px;}
+    .service-grid.reverse{direction:ltr;}
+    .process-steps{grid-template-columns:repeat(2, 1fr); gap:32px;}
+    .faq-grid{grid-template-columns:1fr; gap:48px;}
+  }
+  @media (max-width:768px){
+    .nav-inner{padding:0 24px; gap:16px;}
+    .nav-links{display:none;}
+    section, .service-block{padding:96px 24px;}
+    .process, .faq{padding:120px 24px;}
+    .process-steps{grid-template-columns:1fr;}
+    .footer-inner{grid-template-columns:1fr; gap:40px;}
+    .cta-final{height:auto; padding:96px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav on-dark" id="nav">
+  <div class="nav-inner">
+    <a href="boppartdigital.html" class="nav-brand">
+      <div class="nav-brand-mark">
+      <img src="boppart-logo.png" alt="Boppart Digital">
+    </div>
+      <div>
+        <div class="nav-brand-text">Boppart<span class="tm">™</span></div>
+        <div class="nav-brand-sub">Digital</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="boppartdigital.html">Studio</a>
+      <a href="boppart_about.html">About</a>
+      <a href="boppart_studio.html" class="active">Services</a>
+      <a href="boppartdigital.html#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <div class="hero-meta-line"></div>
+      <div class="hero-meta-text">Services · Two Practices</div>
+    </div>
+    <h1>The bridge between today<br>and <span class="accent">the future.</span></h1>
+    <p class="hero-sub">We don't write strategy decks. We don't build websites. We build self-running operations — tailored to your business, operating without you.</p>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section style="padding:200px 48px 80px;">
+  <div class="container-narrow">
+    <div class="sec-meta" style="justify-content:center;">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Two Practices · One Operator</div>
+    </div>
+    <h2 style="text-align:center; max-width:880px; margin:0 auto;">Senior work,<br><span class="em">in the form you need it.</span></h2>
+  </div>
+</section>
+
+<!-- ===== PLATFORM STUDIO ===== -->
+<section class="service-block" id="studio">
+  <div class="container">
+    <div class="service-grid">
+
+      <div class="service-num-block">
+        <div class="service-num">01</div>
+        <div class="sec-meta">
+          <div class="sec-meta-line"></div>
+          <div class="sec-meta-text">Practice One</div>
+        </div>
+        <h2>Platform <span class="em">Studio.</span></h2>
+        <div class="service-meta">
+          <div class="dot"></div>
+          <span>4 weeks to 4 months · Custom scope</span>
+        </div>
+      </div>
+
+      <div class="service-text">
+        <p>We build AI platforms for select partners — from MVP to enterprise. Solo-operator execution means the founder is also the builder. No agency overhead, no template lock-in.</p>
+        <p>What we deliver looks like AIXXII, CasaFin, CHICCA, DreamNest, LOVMINDA — but yours. Built on the same disciplined stack we use for our own ventures.</p>
+        <p><strong>You own everything.</strong> Code, infrastructure, roadmap, deployment. If we stop working together, you keep building.</p>
+
+        <div class="service-list">
+          <h5>Engagement Tiers</h5>
+          <ul>
+            <li>
+              <div><strong>MVP Platform</strong> · Landing + Auth + Core Feature + Stripe · 4–6 weeks</div>
+              <div class="price">Inquire →</div>
+            </li>
+            <li>
+              <div><strong>Full Platform</strong> · MVP + Admin + Analytics + AI Agents · 3–4 months</div>
+              <div class="price">Inquire →</div>
+            </li>
+            <li>
+              <div><strong>Enterprise</strong> · Multi-Brand, Custom Integration, Team Training</div>
+              <div class="price">Request Proposal →</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="service-cta">
+          <a href="mailto:welcome@boppartdigital.com?subject=Platform%20Studio%20Inquiry">Inquire →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI CONSULTING ===== -->
+<section class="service-block alt" id="consulting">
+  <div class="container">
+    <div class="service-grid reverse">
+
+      <div class="service-num-block">
+        <div class="service-num">02</div>
+        <div class="sec-meta">
+          <div class="sec-meta-line"></div>
+          <div class="sec-meta-text">Practice Two</div>
+        </div>
+        <h2>AI <span class="em">Consulting.</span></h2>
+        <div class="service-meta">
+          <div class="dot"></div>
+          <span>3-month engagement · Strategy + execution · DACH primary</span>
+        </div>
+      </div>
+
+      <div class="service-text">
+        <p>Strategy and execution for finance and operations teams adopting AI. Built specifically for organisations that have heard "use AI" without anyone telling them which tool, for what task, and how to integrate without breaking what already works.</p>
+        <p>Most consulting tells you what to do. We do it with you. By the end of a three-month engagement, your team has a working AI workflow, the documentation to maintain it, and the judgment to pick the next one themselves.</p>
+        <p><strong>From audit to architecture to deployment.</strong></p>
+
+        <div class="service-list">
+          <h5>Engagement Modules</h5>
+          <ul>
+            <li><div><strong>AI Audit</strong> · current workflows, tool stack, real ROI analysis</div></li>
+            <li><div><strong>Tool Selection</strong> · 500+ vetted options, picked for your context</div></li>
+            <li><div><strong>Workflow Architecture</strong> · including agent orchestration if needed</div></li>
+            <li><div><strong>Change Management</strong> · senior leadership briefings + team training</div></li>
+            <li><div><strong>Roadmap</strong> · 12-month adoption plan with owners</div></li>
+          </ul>
+        </div>
+
+        <div class="service-cta">
+          <a href="mailto:welcome@boppartdigital.com?subject=AI%20Consulting%20Inquiry">Book intro call →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process">
+  <div class="container">
+    <div class="sec-meta" style="justify-content:center;">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">How We Work</div>
+    </div>
+    <h2 style="text-align:center;">Four steps.<br><span class="em">No agency overhead.</span></h2>
+
+    <div class="process-steps">
+
+      <div class="process-step">
+        <div class="process-step-num">Step One</div>
+        <h4>Discovery</h4>
+        <div class="duration">Week 1–2</div>
+        <p>Deep dive into your goal, audience, constraints. We say no early if it's not the right fit — protect your time and ours.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-num">Step Two</div>
+        <h4>Architecture</h4>
+        <div class="duration">Week 3–4</div>
+        <p>Stack decisions, AI agent design, data flow. You see the entire system on paper before we write code.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-num">Step Three</div>
+        <h4>Build</h4>
+        <div class="duration">Week 5–12</div>
+        <p>Solo-operator execution. Weekly demo on Fridays. You iterate with us — not after us, not through account managers.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-num">Step Four</div>
+        <h4>Hand-off</h4>
+        <div class="duration">Week 13+</div>
+        <p>You receive code, infrastructure, documentation, roadmap. No subscriptions, no lock-in, no template expiring on you.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="sec-meta">
+          <div class="sec-meta-line"></div>
+          <div class="sec-meta-text">Common Questions</div>
+        </div>
+        <h2 style="font-size:clamp(36px, 4.4vw, 64px);">For partners <span class="em">who're</span><br>doing their diligence.</h2>
+      </div>
+
+      <div class="faq-items">
+
+        <div class="faq-item">
+          <h4>Why solo?</h4>
+          <p>Because every agency I've worked with had three people between me and the actual builder. Solo-operator means the person you talk to is the person who ships. Faster, leaner, more direct.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>What's your capacity?</h4>
+          <p>One Platform Studio engagement at a time, plus one AI Consulting engagement. Two at most. Quality control over volume.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Do you work with startups or only enterprises?</h4>
+          <p>Both, with one filter: I work with partners who think long-term. Startup founders who treat this as a relationship, enterprise teams that don't need to socialize every decision.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>How do you charge?</h4>
+          <p>Platform Studio: fixed-price engagement based on scope. AI Consulting: 3-month retainer. All transparent, all on the website.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Can I see what you've built?</h4>
+          <p>Five live products: AIXXII (aixxii.com), CasaFin (casafin.ch), CHICCA (chicca.online), DreamNest (dreamnest.ch), LOVMINDA (launching). The work speaks for itself.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-final" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Start the Conversation</div>
+    </div>
+    <h2>Tell us what you're <span class="em">building.</span></h2>
+    <p>We respond within 24 hours. Most projects start with a 30-minute discovery call to see whether we're the right fit.</p>
+    <a href="mailto:welcome@boppartdigital.com" class="email">welcome@boppartdigital.com</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <div class="mark"></div>
+        <div class="name">Boppart Digital<span style="font-size:9px; vertical-align:super; color:var(--ink-muted);">™</span></div>
+      </div>
+      <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, senior advisory for those who think long-term.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="boppartdigital.html">Home</a></li>
+        <li><a href="boppart_about.html">About Michaela</a></li>
+        <li><a href="boppart_studio.html">Services & Studio</a></li>
+        <li><a href="boppartdigital.html#portfolio">Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:welcome@boppartdigital.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn · Michaela</a></li>
+        <li><a href="https://www.linkedin.com/company/108615759/" target="_blank" rel="noopener">LinkedIn · Boppart Digital</a></li>
+        <li><a href="https://instagram.com/boppartdigital" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://aixxii.com" target="_blank" rel="noopener">AIXXII</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="boppart_imprint.html">Imprint</a></li>
+        <li><a href="boppart_imprint.html#data-protection">Privacy</a></li>
+        <li><a href="boppart_imprint.html#terms">Terms</a></li>
+        <li><a href="boppart_imprint.html#copyright">Copyright</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Boppart Digital · Zürich, Switzerland</span>
+    <span>Designed and built in-house</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const heroSection = document.querySelector('.hero');
+  const ctaSection = document.querySelector('.cta-final');
+  function updateNav() {
+    const scrollY = window.scrollY;
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight - 80;
+    nav.classList.toggle('scrolled', scrollY > 60);
+    const inHero = scrollY < heroBottom;
+    const inCta = ctaSection && scrollY > ctaSection.offsetTop - 80 && scrollY < ctaSection.offsetTop + ctaSection.offsetHeight - 80;
+    nav.classList.toggle('on-dark', inHero || inCta);
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav);
+</script>
+
+</body>
+</html>

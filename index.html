@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Boppart Digital — AI Operating Studio · Zürich</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Boppart Digital — An AI Operating Studio from Zürich. Five AI ventures owned. Platform builds for select partners. Senior advisory for finance and operations.">
+<meta property="og:title" content="Boppart Digital · AI Operating Studio">
+<meta property="og:description" content="The portfolio for the next decade. From Zürich. For the world.">
+<meta name="theme-color" content="#fdfbf7">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Light Premium — Cream + Charcoal + Champagne */
+    --bg:#fdfbf7;
+    --bg-soft:#f4f0e8;
+    --bg-deeper:#ebe4d4;
+    --ink:#1a1a1f;
+    --ink-soft:#3a3a44;
+    --ink-dim:#6a6a6a;
+    --ink-muted:#9a9890;
+    --champagne:#b8a468;
+    --champagne-deep:#8a7847;
+    --orange:#d97742;
+    --steel:#5c8aa8;
+    --line:rgba(26,26,31,.1);
+    --line-soft:rgba(26,26,31,.05);
+    --line-strong:rgba(184,164,104,.4);
+
+    --serif:'Fraunces', Georgia, serif;
+    --display:'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *,*:before,*:after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; padding:0;
+    font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.65; font-weight:400;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes slowZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+  @keyframes drawLine{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+  /* ===== NAV ===== */
+  .nav{position:fixed; top:0; left:0; right:0; z-index:100;
+    background:transparent; padding:28px 0;
+    transition:all .4s cubic-bezier(.22,.61,.36,1);}
+  .nav.scrolled{padding:16px 0; background:rgba(253,251,247,.92);
+    backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--line-soft);}
+  .nav.on-dark .nav-links a,
+  .nav.on-dark .nav-brand-text,
+  .nav.on-dark .nav-cta{color:var(--bg);}
+  .nav.on-dark .nav-brand-sub{color:var(--champagne);}
+  .nav.on-dark .nav-cta{border-color:var(--bg);}
+  .nav.on-dark .nav-cta:hover{background:var(--bg); color:var(--ink);}
+  .nav-inner{max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; align-items:center; gap:48px;}
+  .nav-brand{display:flex; align-items:center; gap:14px;}
+  .nav-brand-mark{width:64px; height:64px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.30));
+    position:relative; transition:transform .3s;}
+  .nav-brand-mark:hover{transform:scale(1.04);}
+  .nav-brand-mark img{display:none;}
+  .nav-brand-text,.nav-brand-sub{display:none;}
+  .nav.on-dark .nav-brand-mark{filter:drop-shadow(0 2px 14px rgba(0,0,0,.6));}
+  .nav-brand-text{font-family:var(--serif); font-weight:500; font-size:20px;
+    letter-spacing:-.02em; line-height:1; color:var(--ink);
+    transition:color .3s;}
+  .nav-brand-text .tm{font-size:9px; vertical-align:super; color:var(--ink-muted); letter-spacing:0;}
+  .nav-brand-sub{font-family:var(--sans); font-size:9.5px; font-weight:500;
+    letter-spacing:.35em; color:var(--champagne); text-transform:uppercase; margin-top:2px;
+    transition:color .3s;}
+  .nav-links{display:flex; gap:36px; flex:1; justify-content:center;}
+  .nav-links a{font-family:var(--sans); font-size:13.5px; color:var(--ink-soft);
+    transition:color .3s; font-weight:400; letter-spacing:.01em;
+    position:relative;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active{color:var(--ink);}
+  .nav-links a.active:after{content:""; position:absolute; bottom:-6px; left:0; right:0;
+    height:1px; background:var(--champagne);}
+  .nav-cta{font-family:var(--sans); padding:11px 24px; border-radius:100px;
+    background:transparent; border:1px solid var(--ink);
+    color:var(--ink); font-size:12.5px; font-weight:500; letter-spacing:.05em;
+    transition:all .3s; text-transform:uppercase;}
+  .nav-cta:hover{background:var(--ink); color:var(--bg);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative; height:100vh; min-height:820px;
+    display:flex; align-items:flex-end;
+    overflow:hidden; padding:0 0 100px;}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:url('hero-zuerich.jpg') center/cover no-repeat, linear-gradient(135deg,#1a1a1f 0%,#3a3a44 100%);
+    animation:slowZoom 16s ease-out forwards;}
+  .hero-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      rgba(26,26,31,.25) 0%,
+      rgba(26,26,31,.4) 45%,
+      rgba(26,26,31,.85) 95%,
+      rgba(26,26,31,.95) 100%);}
+  .hero-content{position:relative; z-index:2;
+    max-width:1320px; width:100%; margin:0 auto; padding:0 48px;
+    color:var(--bg);
+    animation:fadeUp 1.6s .4s both;}
+  .hero-meta{display:flex; align-items:center; gap:14px; margin-bottom:36px;}
+  .hero-meta-line{width:36px; height:1px; background:var(--champagne);
+    transform-origin:left; animation:drawLine 1.2s .8s both;}
+  .hero-meta-text{font-family:var(--sans); font-size:11.5px; color:var(--champagne);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:500;}
+  h1{font-family:var(--display); font-weight:200;
+    font-size:clamp(56px, 8vw, 132px); line-height:.98; letter-spacing:-.045em;
+    margin:0 0 36px; max-width:1100px; color:var(--bg);}
+  h1 .accent{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .hero-sub{font-family:var(--serif); font-weight:300; font-size:clamp(18px, 1.6vw, 24px);
+    color:var(--bg-soft); max-width:680px; margin:0 0 48px;
+    line-height:1.5; font-style:italic;}
+  .hero-ctas{display:flex; gap:18px; flex-wrap:wrap;}
+  .btn-primary{font-family:var(--sans); padding:18px 36px; border-radius:100px;
+    background:var(--champagne); border:none;
+    color:var(--ink); font-size:13px; font-weight:600; letter-spacing:.08em;
+    text-transform:uppercase;
+    transition:all .25s;}
+  .btn-primary:hover{background:var(--bg); transform:translateY(-2px);}
+  .btn-ghost-light{font-family:var(--sans); padding:18px 36px; border-radius:100px;
+    background:transparent; border:1px solid rgba(253,251,247,.4);
+    color:var(--bg); font-size:13px; font-weight:500; letter-spacing:.08em;
+    text-transform:uppercase;
+    transition:all .25s;}
+  .btn-ghost-light:hover{border-color:var(--bg); background:rgba(253,251,247,.08);}
+
+  /* ===== SECTION BASE ===== */
+  section{position:relative; padding:180px 48px;}
+  .container{max-width:1320px; margin:0 auto;}
+  .container-narrow{max-width:980px; margin:0 auto;}
+  .sec-meta{display:flex; align-items:center; gap:14px; margin-bottom:40px;}
+  .sec-meta-line{width:24px; height:1px; background:var(--champagne);}
+  .sec-meta-text{font-family:var(--sans); font-size:11px; color:var(--champagne-deep);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:600;}
+  h2{font-family:var(--display); font-weight:200;
+    font-size:clamp(40px, 5.4vw, 88px); line-height:1.02; letter-spacing:-.035em;
+    margin:0 0 32px;}
+  h2 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .sec-sub{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(18px, 1.4vw, 22px); color:var(--ink-soft); line-height:1.55;
+    max-width:720px; margin:0 0 64px;}
+
+  /* ===== INTRO ===== */
+  .intro{padding:200px 48px 120px; background:var(--bg);}
+  .intro-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:120px; align-items:start;}
+  .intro-left h2{font-size:clamp(36px, 4.4vw, 64px); margin:0;}
+  .intro-right{padding-top:18px;}
+  .intro-right p{font-size:18px; line-height:1.75; color:var(--ink-soft);
+    font-weight:400; margin:0 0 24px;}
+  .intro-right p:first-child{font-family:var(--serif); font-weight:300;
+    font-size:24px; line-height:1.55; color:var(--ink); margin-bottom:32px;
+    letter-spacing:-.005em;}
+  .intro-right p strong{color:var(--champagne-deep); font-weight:500;}
+
+  /* ===== PORTFOLIO ===== */
+  .portfolio{background:var(--bg-soft); padding:180px 48px;}
+  .portfolio-head{display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:80px; gap:48px; flex-wrap:wrap;}
+  .portfolio-head .left{max-width:560px;}
+  .portfolio-head .right p{font-size:15.5px; color:var(--ink-dim); max-width:380px;
+    line-height:1.7; margin:0; font-weight:400;}
+
+  .ventures-list{display:flex; flex-direction:column;}
+  .venture-row{display:grid; grid-template-columns:80px 1fr 1.5fr 200px;
+    gap:48px; padding:40px 0; align-items:center;
+    border-top:1px solid var(--line);
+    transition:all .35s; cursor:pointer;}
+  .venture-row:last-child{border-bottom:1px solid var(--line);}
+  .venture-row:hover{padding-left:18px; background:rgba(184,164,104,.04);}
+  .venture-row:hover .venture-row-name{color:var(--champagne-deep);}
+  .venture-row:hover .venture-row-arrow{transform:translateX(8px); color:var(--ink);}
+  .venture-row-num{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:30px; color:var(--ink-muted);}
+  .venture-row-name{font-family:var(--serif); font-weight:400; font-size:42px;
+    letter-spacing:-.015em; transition:color .35s; line-height:1; color:var(--ink);}
+  .venture-row-desc{font-size:15px; color:var(--ink-dim); line-height:1.65; font-weight:400;}
+  .venture-row-meta{display:flex; align-items:center; justify-content:flex-end;
+    gap:14px; font-family:var(--sans); font-size:11px;
+    color:var(--ink-muted); letter-spacing:.15em; text-transform:uppercase;}
+  .venture-row-arrow{font-family:var(--serif); font-size:26px; color:var(--ink-dim);
+    transition:all .35s;}
+
+  /* ===== VENTURE GRID (Portfolio Showcase) ===== */
+  .venture-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+    max-width:1280px; margin:0 auto;}
+  .venture-card{position:relative; overflow:hidden; border-radius:18px;
+    aspect-ratio:4/5; cursor:pointer; transition:transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+    text-decoration:none;}
+  .venture-card:hover{transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.15);}
+  .venture-card:nth-child(4){grid-column:1/3;}
+  .venture-card:nth-child(4) .venture-content{padding-bottom:48px;}
+  .venture-card:nth-child(4){aspect-ratio:auto; min-height:340px;}
+  .venture-card:nth-child(5){aspect-ratio:auto; min-height:340px;}
+  .venture-bg{position:absolute; inset:0; z-index:0;}
+  .v-aixxii .venture-bg{background:linear-gradient(135deg, #0a0e1f 0%, #1a1f3a 50%, #2a3155 100%);}
+  .v-aixxii .venture-bg:after{content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(184,164,104,.25), transparent 50%);}
+  .v-casafin .venture-bg{background:linear-gradient(135deg, #2c4a3e 0%, #4a7e63 50%, #6fa885 100%);}
+  .v-casafin .venture-bg:after{content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 70% 30%, rgba(255,255,255,.18), transparent 50%);}
+  .v-chicca .venture-bg{background:linear-gradient(135deg, #9a6f3a 0%, #c08a48 50%, #d4a05c 100%);}
+  .v-chicca .venture-bg:after{content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 70%, rgba(255,255,255,.15), transparent 50%);}
+  .v-dreamnest .venture-bg{background:linear-gradient(135deg, #1a1a1f 0%, #3a2e1e 50%, #5a4530 100%);}
+  .v-dreamnest .venture-bg:after{content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 80% 20%, rgba(184,164,104,.35), transparent 60%);}
+  .v-lovminda .venture-bg{background:linear-gradient(135deg, #8b3a3a 0%, #b85555 50%, #d47070 100%);}
+  .v-lovminda .venture-bg:after{content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 70% 30%, rgba(255,255,255,.2), transparent 55%);}
+  .venture-content{position:relative; z-index:2; padding:36px 36px 40px;
+    color:#fff; height:100%; display:flex; flex-direction:column;
+    justify-content:space-between;}
+  .venture-tag{font-family:var(--sans); font-size:10.5px; letter-spacing:.28em;
+    text-transform:uppercase; font-weight:600; opacity:.85; color:var(--champagne);}
+  .venture-card h3{font-family:var(--display); font-weight:300; font-size:48px;
+    letter-spacing:-.03em; margin:18px 0 14px; line-height:1; color:#fff;}
+  .venture-card p{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:16.5px; line-height:1.55; opacity:.92; max-width:340px;
+    margin:0 0 28px; color:#fff;}
+  .venture-link{font-family:var(--sans); font-size:13px; font-weight:500;
+    letter-spacing:.04em; padding-top:18px; border-top:1px solid rgba(255,255,255,.2);
+    margin-top:auto; color:#fff;}
+  .venture-card:hover .venture-link{opacity:1;}
+  @media (max-width:900px){
+    .venture-grid{grid-template-columns:1fr;}
+    .venture-card:nth-child(4){grid-column:1;}
+  }
+
+  /* ===== VISUAL STRIP (legacy, kept for compat) ===== */
+  .visual-strip{padding:140px 48px; background:var(--bg);}
+  .visual-strip-head{text-align:center; max-width:900px; margin:0 auto 64px;}
+  .visual-strip-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:16px;
+    max-width:1280px; margin:0 auto;}
+  .visual-strip-left{display:flex; flex-direction:column; gap:16px;}
+  .visual-strip-right{display:grid; gap:16px;}
+  .visual-tile{position:relative; overflow:hidden; transition:transform .4s ease;}
+  .visual-tile:hover{transform:translateY(-3px);}
+  .visual-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+  .visual-tile.large{aspect-ratio:16/10;}
+  .visual-tile.small{aspect-ratio:4/3;}
+  .visual-tile .caption{position:absolute; bottom:0; left:0; right:0;
+    padding:24px 28px; background:linear-gradient(180deg, transparent, rgba(20,24,31,.85));
+    color:var(--bg);}
+  .visual-tile .caption .tag{font-family:var(--sans); font-size:10.5px;
+    color:var(--champagne); letter-spacing:.25em; text-transform:uppercase; font-weight:600; margin-bottom:6px;}
+  .visual-tile .caption .text{font-family:var(--serif); font-style:italic;
+    font-weight:300; font-size:18px; color:var(--bg); margin:0; line-height:1.3;}
+
+  /* ===== SWISS ANCHOR ===== */
+  .anchor{padding:0; position:relative; height:680px; overflow:hidden;}
+  .anchor-bg{position:absolute; inset:0;
+    background:url('bridge-vascodagama.jpg') center/cover no-repeat, linear-gradient(135deg,#1a1a1f 0%,#3a3a44 100%);
+    transform:scale(1.04);}
+  .anchor-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      rgba(20,24,31,.25) 0%,
+      rgba(20,24,31,.05) 30%,
+      rgba(20,24,31,.05) 70%,
+      rgba(20,24,31,.6) 100%);}
+  .anchor-content{position:relative; z-index:2; height:100%;
+    max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding-bottom:80px;}
+  .anchor-quote{font-family:var(--serif); font-weight:200; font-style:italic;
+    font-size:clamp(36px, 5vw, 72px); line-height:1.05; letter-spacing:-.02em;
+    color:var(--bg); margin:0 0 24px; max-width:1000px;
+    text-shadow:0 2px 30px rgba(0,0,0,.3);}
+  .anchor-quote .em{color:var(--champagne); font-weight:300;}
+  .anchor-attribution{font-family:var(--sans); font-size:11.5px; color:var(--champagne);
+    letter-spacing:.3em; text-transform:uppercase; display:flex; align-items:center; gap:14px;}
+  .anchor-attribution .line{width:30px; height:1px; background:var(--champagne);}
+
+  /* ===== SERVICES PREVIEW ===== */
+  .services{background:var(--bg); padding:200px 48px;}
+  .services-list{display:flex; flex-direction:column; gap:0;}
+  .service-row{display:grid; grid-template-columns:1fr 2fr 1fr;
+    gap:64px; padding:56px 0; align-items:start;
+    border-bottom:1px solid var(--line);
+    transition:padding .35s;}
+  .service-row:first-child{border-top:1px solid var(--line);}
+  .service-row:hover{padding-left:14px;}
+  .service-num{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:72px; line-height:1; color:var(--champagne);}
+  .service-content h3{font-family:var(--serif); font-weight:400; font-size:38px;
+    letter-spacing:-.015em; margin:0 0 12px; color:var(--ink);}
+  .service-content .service-meta{font-family:var(--sans); font-size:11.5px;
+    color:var(--champagne-deep); letter-spacing:.2em; text-transform:uppercase;
+    margin-bottom:24px; font-weight:600;}
+  .service-content p{font-size:16.5px; color:var(--ink-soft); line-height:1.75;
+    margin:0; max-width:520px; font-weight:400;}
+  .service-cta-wrap{display:flex; justify-content:flex-end; align-items:center; padding-top:14px;}
+  .service-arrow{font-family:var(--sans); font-size:12px; color:var(--ink);
+    letter-spacing:.15em; text-transform:uppercase; font-weight:600;
+    display:inline-flex; align-items:center; gap:14px;
+    border-bottom:1px solid var(--champagne); padding-bottom:6px;
+    transition:gap .3s;}
+  .service-arrow:hover{gap:22px;}
+
+  /* ===== REACH ===== */
+  .reach{padding:0; position:relative; height:720px; overflow:hidden;}
+  .reach-bg{position:absolute; inset:0;
+    background:url('hero-zuerich.jpg') center/cover no-repeat, linear-gradient(135deg,#1a1a1f 0%,#3a3a44 100%);
+    filter:saturate(.9) brightness(.85);}
+  .reach-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg,
+      rgba(20,24,31,.85) 0%,
+      rgba(20,24,31,.55) 50%,
+      rgba(20,24,31,.25) 100%);}
+  .reach-content{position:relative; z-index:2; height:100%;
+    max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; flex-direction:column; justify-content:center;
+    color:var(--bg);}
+  .reach-content .sec-meta-line{background:var(--bg);}
+  .reach-content .sec-meta-text{color:var(--bg);}
+  .reach-content h2{max-width:760px; color:var(--bg);}
+  .reach-content p{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:22px; color:var(--bg-soft); max-width:560px; line-height:1.6;
+    margin:0 0 48px;}
+  .reach-locations{display:flex; gap:48px; font-family:var(--sans);
+    font-size:12px; color:var(--bg); letter-spacing:.2em; text-transform:uppercase; font-weight:500;
+    flex-wrap:wrap;}
+  .reach-locations span{position:relative;}
+  .reach-locations span:not(:last-child):after{content:"·"; margin-left:48px;
+    color:var(--champagne);}
+
+  /* ===== CONTACT TEASER ===== */
+  .contact-teaser{text-align:center; padding:220px 48px; background:var(--bg);}
+  .contact-teaser h2{margin-bottom:24px; color:var(--ink);}
+  .contact-teaser .lead{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:20px; color:var(--ink-soft); max-width:560px; margin:0 auto 56px;}
+  .contact-form{max-width:600px; margin:0 auto; display:grid; gap:20px; text-align:left;}
+  .contact-form .row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .contact-form input, .contact-form textarea{font-family:var(--sans); font-size:15px;
+    padding:16px 20px; background:var(--bg-soft); border:1px solid var(--line);
+    color:var(--ink); border-radius:6px; width:100%; transition:all .2s;}
+  .contact-form input:focus, .contact-form textarea:focus{outline:none;
+    border-color:var(--champagne); background:var(--bg);}
+  .contact-form textarea{min-height:140px; resize:vertical; font-family:var(--sans);}
+  .contact-form button{font-family:var(--sans); padding:18px 36px; border-radius:100px;
+    background:var(--ink); color:var(--bg); border:none; font-size:13px;
+    font-weight:600; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+    transition:all .25s; justify-self:center; margin-top:12px;}
+  .contact-form button:hover{background:var(--champagne); color:var(--ink); transform:translateY(-2px);}
+  .contact-form .honeypot{display:none;}
+  @media (max-width:640px){.contact-form .row{grid-template-columns:1fr;}}
+  .contact-teaser .email{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(28px, 4vw, 56px); color:var(--champagne-deep);
+    border-bottom:1px solid var(--champagne); padding-bottom:12px;
+    display:inline-block; letter-spacing:-.01em;
+    transition:opacity .2s;}
+  .contact-teaser .email:hover{opacity:.7;}
+  .contact-teaser p{font-family:var(--sans); font-size:13px; color:var(--ink-muted);
+    letter-spacing:.2em; text-transform:uppercase; margin-top:32px; font-weight:500;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:64px 48px 40px;
+    background:var(--bg-deeper);
+    border-top:1px solid var(--line);}
+  .footer-inner{max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns:1.6fr 1fr 1.1fr 1fr; gap:56px;
+    margin-bottom:48px; align-items:start;}
+  .footer-brand-block .footer-brand{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .footer-brand-block .mark{width:56px; height:56px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.15));}
+  .footer-brand-block .name{display:none;}
+  .footer-brand-block p{font-size:13.5px; color:var(--ink-dim); line-height:1.65;
+    max-width:300px; font-weight:400;}
+  .footer-col h5{font-family:var(--sans); font-size:11px; font-weight:700;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase;
+    margin:0 0 20px;}
+  .footer-col ul{list-style:none; padding:0; margin:0;
+    display:flex; flex-direction:column; gap:11px;}
+  .footer-col ul li a{font-size:13.5px; color:var(--ink-soft);
+    transition:color .2s; font-weight:400;}
+  .footer-col ul li a:hover{color:var(--champagne-deep);}
+  .footer-bottom{max-width:1320px; margin:0 auto; padding-top:32px;
+    border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--sans); font-size:11.5px; color:var(--ink-muted);
+    letter-spacing:.05em; flex-wrap:wrap; gap:16px;}
+
+  /* ===== MOBILE ===== */
+  @media (max-width:1024px){
+    .intro-grid{grid-template-columns:1fr; gap:48px;}
+    .venture-row{grid-template-columns:auto 1fr auto; gap:24px;}
+    .venture-row-desc{display:none;}
+    .service-row{grid-template-columns:auto 1fr; gap:24px;}
+    .service-cta-wrap{display:none;}
+  }
+  @media (max-width:768px){
+    .nav-inner{padding:0 24px; gap:16px;}
+    .nav-links{display:none;}
+    section{padding:96px 24px;}
+    .intro{padding:120px 24px 80px;}
+    .portfolio, .services{padding:96px 24px;}
+    .contact-teaser{padding:120px 24px;}
+    .footer-inner{grid-template-columns:1fr; gap:40px;}
+    .reach{height:auto; padding:96px 24px;}
+    .anchor{height:480px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav on-dark" id="nav">
+  <div class="nav-inner">
+    <a href="boppartdigital.html" class="nav-brand">
+      <div class="nav-brand-mark">
+        <img src="boppart-logo.png" alt="Boppart Digital">
+      </div>
+      <div>
+        <div class="nav-brand-text">Boppart<span class="tm">™</span></div>
+        <div class="nav-brand-sub">Digital</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="boppartdigital.html" class="active">Studio</a>
+      <a href="boppart_about.html">About</a>
+      <a href="boppart_studio.html">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <div class="hero-meta-line"></div>
+      <div class="hero-meta-text">AI Operating Studio · Zürich · est. 2022</div>
+    </div>
+    <h1>The portfolio for the<br><span class="accent">next decade.</span></h1>
+    <p class="hero-sub">">We don't build websites. We build self-running operations — tailored to you, operating without you.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">Our Ventures</a>
+      <a href="boppart_studio.html" class="btn-ghost-light">Work With Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <div class="sec-meta">
+          <div class="sec-meta-line"></div>
+          <div class="sec-meta-text">Studio</div>
+        </div>
+        <h2>An operating <span class="em">house,</span><br>not an agency.</h2>
+      </div>
+      <div class="intro-right">
+        <p>Boppart Digital is a Zürich-based AI Operating Studio founded in 2022. We own five ventures, build platforms for select partners, and run interim CFO engagements for Swiss SMEs and international groups.</p>
+        <p>Twenty-four years operating finance. Twelve as a co-founder. Now we build the systems that operate finance — and we don't sell tools, we build the platforms that ship them.</p>
+        <p>Our work is shaped by what senior finance taught us: <strong>precision is non-negotiable, distribution beats novelty, and the right system pays for itself within months.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="portfolio-head">
+      <div class="left">
+        <div class="sec-meta">
+          <div class="sec-meta-line"></div>
+          <div class="sec-meta-text">Portfolio · Five Ventures</div>
+        </div>
+        <h2>What we build,<br><span class="em">we operate.</span></h2>
+      </div>
+      <div class="right">
+        <p>Each venture serves a distinct vertical. Each ships with the same DNA: senior operator design, AI orchestration at its core, and a clear path to revenue from day one.</p>
+      </div>
+    </div>
+
+    <div class="ventures-list">
+
+      <a href="https://aixxii.com" target="_blank" rel="noopener" class="venture-row">
+        <div class="venture-row-num">01</div>
+        <div class="venture-row-name">AIXXII</div>
+        <div class="venture-row-desc">The decision layer for the fragmented AI ecosystem. 500+ curated tools, intelligent routing engine.</div>
+        <div class="venture-row-meta"><span>aixxii.com</span><span class="venture-row-arrow">→</span></div>
+      </a>
+
+      <a href="https://casafin.ch" target="_blank" rel="noopener" class="venture-row">
+        <div class="venture-row-num">02</div>
+        <div class="venture-row-name">CasaFin</div>
+        <div class="venture-row-desc">Swiss Financial Operating System for families. AI assistant Fina, multi-account clarity.</div>
+        <div class="venture-row-meta"><span>casafin.ch</span><span class="venture-row-arrow">→</span></div>
+      </a>
+
+      <a href="https://chicca.online" target="_blank" rel="noopener" class="venture-row">
+        <div class="venture-row-num">03</div>
+        <div class="venture-row-name">CHICCA</div>
+        <div class="venture-row-desc">AI Social Media Manager. Replaces the role, not the strategy. No prompting, only clicking.</div>
+        <div class="venture-row-meta"><span>chicca.online</span><span class="venture-row-arrow">→</span></div>
+      </a>
+
+      <a href="https://dreamnest.ch" target="_blank" rel="noopener" class="venture-row">
+        <div class="venture-row-num">04</div>
+        <div class="venture-row-name">DreamNest</div>
+        <div class="venture-row-desc">Private off-market luxury real estate network. CHF 1M+ properties, curated relationships.</div>
+        <div class="venture-row-meta"><span>dreamnest.ch</span><span class="venture-row-arrow">→</span></div>
+      </a>
+
+      <a href="#" class="venture-row">
+        <div class="venture-row-num">05</div>
+        <div class="venture-row-name">LOVMINDA</div>
+        <div class="venture-row-desc">AI that remembers what matters in your relationships. Built with care, for couples and families.</div>
+        <div class="venture-row-meta"><span>lovminda.com</span><span class="venture-row-arrow">→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISUAL STRIP ===== -->
+<section class="visual-strip" id="portfolio">
+  <div class="visual-strip-head">
+    <div class="sec-meta" style="justify-content:center;">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Our Portfolio</div>
+    </div>
+    <h2 style="font-size:clamp(32px, 4vw, 56px);">The ventures <span class="em">we built.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-weight:300; font-size:18px; color:var(--ink-soft); margin-top:24px; max-width:680px; margin-left:auto; margin-right:auto;">Five AI ventures, each operating without us. Same playbook we'd build for you.</p>
+  </div>
+
+  <div class="venture-grid">
+    <a href="https://aixxii.com" target="_blank" class="venture-card v-aixxii">
+      <div class="venture-bg"></div>
+      <div class="venture-content">
+        <div class="venture-tag">01 — AI Operating System</div>
+        <h3>AIXXII</h3>
+        <p>Decision intelligence, 501 curated tools, autonomous agents. The flagship.</p>
+        <div class="venture-link">aixxii.com →</div>
+      </div>
+    </a>
+    <a href="https://casafin.ch" target="_blank" class="venture-card v-casafin">
+      <div class="venture-bg"></div>
+      <div class="venture-content">
+        <div class="venture-tag">02 — Swiss Financial OS</div>
+        <h3>CasaFin</h3>
+        <p>"Endlich Überblick über dein Geld." AI assistant Fina, 2'400 waitlist.</p>
+        <div class="venture-link">casafin.ch →</div>
+      </div>
+    </a>
+    <a href="https://chicca.online" target="_blank" class="venture-card v-chicca">
+      <div class="venture-bg"></div>
+      <div class="venture-content">
+        <div class="venture-tag">03 — Social Media Manager</div>
+        <h3>CHICCA</h3>
+        <p>Replaces the social media manager job. No prompting, just clicking.</p>
+        <div class="venture-link">chicca.online →</div>
+      </div>
+    </a>
+    <a href="https://dreamnest.ch" target="_blank" class="venture-card v-dreamnest">
+      <div class="venture-bg"></div>
+      <div class="venture-content">
+        <div class="venture-tag">04 — Off-Market Real Estate</div>
+        <h3>DreamNest</h3>
+        <p>Private luxury network for CHF 1M+ properties. Members-only.</p>
+        <div class="venture-link">dreamnest.ch →</div>
+      </div>
+    </a>
+    <a href="#contact" class="venture-card v-lovminda">
+      <div class="venture-bg"></div>
+      <div class="venture-content">
+        <div class="venture-tag">05 — Coming 2026</div>
+        <h3>LOVMINDA</h3>
+        <p>AI love coach & life organizer. Important dates, relationship advice, daily planning.</p>
+        <div class="venture-link">Launch soon →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== SWISS ANCHOR ===== -->
+<section class="anchor">
+  <div class="anchor-bg"></div>
+  <div class="anchor-content">
+    <p class="anchor-quote">"Precision is a posture. We choose <span class="em">few</span> things and do them with <span class="em">care.</span>"</p>
+    <div class="anchor-attribution">
+      <div class="line"></div>
+      <span>Zürich · est. 2022</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES PREVIEW ===== -->
+<section class="services">
+  <div class="container">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Services</div>
+    </div>
+    <h2>Beyond the studio.<br><span class="em">Senior operator on demand.</span></h2>
+    <p class="sec-sub">For organisations that need experience — not another consultant.</p>
+
+    <div class="services-list">
+
+      <a href="boppart_studio.html#studio" class="service-row" style="text-decoration:none; color:inherit;">
+        <div class="service-num">01</div>
+        <div class="service-content">
+          <h3>Platform Studio</h3>
+          <div class="service-meta">4 weeks to 4 months · Custom scope</div>
+          <p>We build AI platforms for select partners — from MVP to enterprise. Solo-operator execution. You own the code, infrastructure, and roadmap.</p>
+        </div>
+        <div class="service-cta-wrap">
+          <span class="service-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="boppart_studio.html#consulting" class="service-row" style="text-decoration:none; color:inherit;">
+        <div class="service-num">02</div>
+        <div class="service-content">
+          <h3>AI Consulting</h3>
+          <div class="service-meta">3-month engagement · Strategy + execution</div>
+          <p>Strategy and execution for finance and operations teams adopting AI. From audit to architecture to deployment.</p>
+        </div>
+        <div class="service-cta-wrap">
+          <span class="service-arrow">Explore →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT TEASER ===== -->
+<section class="contact-teaser" id="contact">
+  <div class="container-narrow">
+    <div class="sec-meta" style="justify-content:center;">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Get in Touch</div>
+    </div>
+    <h2>Let's build something <span class="em">that lasts.</span></h2>
+    <p class="lead">Tell us what you're building. We respond within 24 hours.</p>
+
+    <form class="contact-form" action="https://formsubmit.co/welcome@boppartdigital.com" method="POST">
+      <input type="hidden" name="_subject" value="New inquiry · Boppart Digital">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://boppartdigital.com/?sent=1">
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+
+      <div class="row">
+        <input type="text" name="Name" placeholder="Your name" required>
+        <input type="email" name="Email" placeholder="Your email" required>
+      </div>
+      <input type="text" name="Company" placeholder="Company or venture (optional)">
+      <textarea name="Message" placeholder="What are you building? What do you need help with?" required></textarea>
+      <button type="submit">Send Message →</button>
+    </form>
+
+    <p style="margin-top:32px; color:var(--ink-muted); font-size:12px;">Zürich · CET · Replies within 24 hours</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <div class="mark"></div>
+        <div class="name">Boppart Digital</div>
+      </div>
+      <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, those who think long-term.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="boppartdigital.html">Home</a></li>
+        <li><a href="boppart_about.html">About Michaela</a></li>
+        <li><a href="boppart_studio.html">Services & Studio</a></li>
+        <li><a href="boppart_portfolio.html">Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:welcome@boppartdigital.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn &middot; Michaela</a></li>
+        <li><a href="https://www.linkedin.com/company/108615759/" target="_blank" rel="noopener">LinkedIn &middot; Boppart Digital</a></li>
+        <li><a href="https://instagram.com/boppartdigital" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://aixxii.com" target="_blank" rel="noopener">AIXXII</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="boppart_imprint.html">Imprint</a></li>
+        <li><a href="boppart_imprint.html#data-protection">Privacy</a></li>
+        <li><a href="boppart_imprint.html#terms">Terms</a></li>
+        <li><a href="boppart_imprint.html#copyright">Copyright</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Boppart Digital &middot; Zurich, Switzerland</span>
+    <span>Designed and built in-house</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  if(nav){
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+</script>
+
+</body>
+</html>

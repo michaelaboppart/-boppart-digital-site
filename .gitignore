@@ -1,0 +1,13 @@
+# OneDrive sync junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backups
+*.bak
+*.tmp
+*.orig
+
+# Editor
+.vscode/
+.idea/

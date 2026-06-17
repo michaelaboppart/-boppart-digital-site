@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio · Boppart Digital — Five Ventures Built Solo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Five ventures built solo in eight months. AIXXII, CasaFin, CHICCA, DreamNest, LOVMINDA — each a case study in disciplined AI platform building.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fdfbf7; --bg-soft:#f4f0e8; --bg-deeper:#ebe4d4;
+    --ink:#1a1a1f; --ink-soft:#3a3a44; --ink-dim:#6a6a6a; --ink-muted:#9a9890;
+    --champagne:#b8a468; --champagne-deep:#8a7847;
+    --orange:#d97742; --steel:#5c8aa8;
+    --line:rgba(26,26,31,.1); --line-soft:rgba(26,26,31,.05);
+    --serif:'Fraunces',serif; --display:'Inter Tight',sans-serif; --sans:'Inter',sans-serif;
+  }
+  *,*:before,*:after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased; line-height:1.65;}
+  a{color:inherit; text-decoration:none;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes slowZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+
+  /* NAV (light mode) */
+  .nav{position:fixed; top:0; left:0; right:0; z-index:100;
+    background:transparent; padding:28px 0; transition:all .4s;}
+  .nav.scrolled{padding:16px 0; background:rgba(253,251,247,.95);
+    backdrop-filter:blur(24px); border-bottom:1px solid var(--line-soft);}
+  .nav.on-dark .nav-links a, .nav.on-dark .nav-brand-text,
+  .nav.on-dark .nav-cta{color:var(--bg);}
+  .nav.on-dark .nav-cta{border-color:var(--bg);}
+  .nav.on-dark .nav-cta:hover{background:var(--bg); color:var(--ink);}
+  .nav-inner{max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; align-items:center; gap:48px;}
+  .nav-brand{display:flex; align-items:center; gap:14px;}
+  .nav-brand-mark{width:64px; height:64px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.30));
+    position:relative; transition:transform .3s;}
+  .nav-brand-mark:hover{transform:scale(1.04);}
+  .nav-brand-mark img{display:none;}
+  .nav-brand-text,.nav-brand-sub{display:none;}
+  .nav.on-dark .nav-brand-mark{filter:drop-shadow(0 2px 14px rgba(0,0,0,.6));}
+  .nav-brand-text{font-family:var(--display); font-weight:500; font-size:20px;
+    letter-spacing:-.02em; transition:color .3s;}
+  .nav-brand-text .tm{font-size:9px; vertical-align:super; color:var(--ink-muted);}
+  .nav-brand-sub{font-family:var(--sans); font-size:9.5px; font-weight:500;
+    letter-spacing:.35em; color:var(--champagne); text-transform:uppercase; margin-top:2px;}
+  .nav-links{display:flex; gap:36px; flex:1; justify-content:center;}
+  .nav-links a{font-size:13.5px; color:var(--ink-soft); position:relative;
+    letter-spacing:.01em; transition:color .3s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active:after{content:""; position:absolute; bottom:-6px; left:0; right:0;
+    height:1px; background:var(--champagne);}
+  .nav-cta{padding:11px 24px; border-radius:100px; background:transparent; border:1px solid var(--ink);
+    color:var(--ink); font-size:12.5px; font-weight:500; letter-spacing:.05em;
+    transition:all .3s; text-transform:uppercase;}
+  .nav-cta:hover{background:var(--ink); color:var(--bg);}
+
+  /* HERO (dark) */
+  .hero{position:relative; height:80vh; min-height:680px;
+    display:flex; align-items:flex-end; padding:0 0 120px; overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:url('zurich-prime.jpg') center/cover no-repeat, linear-gradient(135deg,#0a0e1f 0%,#1a1f3a 100%);
+    animation:slowZoom 16s ease-out forwards;
+    filter:saturate(1.1) brightness(.95);}
+  .hero-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(26,26,31,.4) 0%, rgba(26,26,31,.6) 60%, rgba(26,26,31,.95) 100%);}
+  .hero-content{position:relative; z-index:2; max-width:1320px; width:100%;
+    margin:0 auto; padding:0 48px; color:var(--bg);
+    animation:fadeUp 1.5s .3s both;}
+  .hero-meta{display:flex; align-items:center; gap:14px; margin-bottom:32px;}
+  .hero-meta-line{width:36px; height:1px; background:var(--champagne);}
+  .hero-meta-text{font-family:var(--sans); font-size:11.5px; color:var(--champagne);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:500;}
+  h1{font-family:var(--display); font-weight:200;
+    font-size:clamp(56px, 8vw, 130px); line-height:.95; letter-spacing:-.045em;
+    margin:0 0 32px; max-width:1100px; color:var(--bg);}
+  h1 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .hero-sub{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:clamp(18px, 1.5vw, 22px); color:var(--bg-soft); max-width:680px;
+    line-height:1.5; margin:0;}
+
+  /* SECTION */
+  section{position:relative; padding:160px 48px;}
+  .container{max-width:1320px; margin:0 auto;}
+  .sec-meta{display:flex; align-items:center; gap:14px; margin-bottom:40px;}
+  .sec-meta-line{width:24px; height:1px; background:var(--champagne);}
+  .sec-meta-text{font-family:var(--sans); font-size:11px; color:var(--champagne-deep);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:600;}
+  h2{font-family:var(--display); font-weight:200;
+    font-size:clamp(40px, 5.4vw, 84px); line-height:1.02; letter-spacing:-.035em;
+    margin:0 0 32px;}
+  h2 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+
+  /* CASE STUDIES */
+  .case{padding:180px 48px;}
+  .case.alt{background:var(--bg-soft);}
+  .case-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:120px; align-items:start;}
+  .case-grid.reverse{direction:rtl;}
+  .case-grid.reverse > *{direction:ltr;}
+  .case-num{font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:14px; color:var(--champagne); letter-spacing:.25em;
+    text-transform:uppercase; margin-bottom:24px; font-style:normal;}
+  .case-name{font-family:var(--display); font-weight:200;
+    font-size:clamp(56px, 7vw, 96px); line-height:1; letter-spacing:-.04em;
+    margin:0 0 16px;}
+  .case-tagline{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:22px; color:var(--champagne-deep); margin:0 0 32px; line-height:1.4;}
+  .case-meta{display:flex; gap:32px; padding:24px 0; margin-bottom:32px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    flex-wrap:wrap;}
+  .case-meta-item{display:flex; flex-direction:column; gap:6px;}
+  .case-meta-item .label{font-family:var(--sans); font-size:10.5px; color:var(--ink-muted);
+    letter-spacing:.2em; text-transform:uppercase; font-weight:600;}
+  .case-meta-item .value{font-family:var(--display); font-weight:400; font-size:16px;
+    color:var(--ink); letter-spacing:-.005em;}
+
+  .case-text p{font-size:16px; line-height:1.75; color:var(--ink-soft);
+    margin:0 0 20px; font-weight:400;}
+  .case-text p strong{color:var(--champagne-deep); font-weight:500;}
+  .case-text p.lead{font-family:var(--serif); font-weight:300; font-size:20px;
+    color:var(--ink); line-height:1.5; margin-bottom:32px;}
+
+  .case-build h5{font-family:var(--sans); font-size:11px; font-weight:600;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase;
+    margin:32px 0 18px;}
+  .case-build ul{list-style:none; padding:0; margin:0;
+    display:flex; flex-wrap:wrap; gap:8px;}
+  .case-build ul li{font-family:var(--sans); font-size:12px; padding:6px 14px;
+    background:var(--bg-soft); border:1px solid var(--line); color:var(--ink-soft);
+    letter-spacing:.04em;}
+  .case.alt .case-build ul li{background:var(--bg);}
+
+  .case-cta{margin-top:48px;}
+  .case-cta a{font-family:var(--sans); padding:16px 32px; border-radius:100px;
+    background:var(--ink); color:var(--bg); font-size:12.5px;
+    font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:14px;
+    transition:all .25s;}
+  .case-cta a:hover{background:var(--champagne-deep); transform:translateY(-2px);}
+
+  .case-image-wrap{position:sticky; top:120px;
+    aspect-ratio:4/3; overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.15);}
+  .case-image{width:100%; height:100%; object-fit:cover;}
+  .case-image{position:relative; box-shadow:0 20px 50px rgba(0,0,0,.15); border-radius:8px; overflow:hidden;}
+  .case-image.aixxii{background:#0a0918 url('venture-aixxii.png') center/contain no-repeat;}
+  .case-image.casafin{background:#fff url('venture-casafin.png') center/contain no-repeat;}
+  .case-image.chicca{background:#fef8f3 url('venture-chicca.png') center/contain no-repeat;}
+  .case-image.dreamnest{background:#2a1f1a url('venture-dreamnest.png') center/contain no-repeat;}
+  .case-image.lovminda{background:linear-gradient(135deg, #f4e8e0, #f5c4b8 60%, #c98979);
+    display:flex; align-items:center; justify-content:center;}
+  .case-image.lovminda:before{content:"LOVMINDA"; font-family:var(--display); font-weight:200;
+    font-size:48px; color:var(--ink); letter-spacing:.08em;}
+  .case-image.lovminda:after{content:"Coming 2026"; position:absolute; bottom:24px; left:24px;
+    font-family:var(--sans); font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--ink-soft);}
+
+  /* CTA */
+  .cta-final{padding:160px 48px 200px; position:relative; background:var(--bg-soft);}
+  .cta-bg{display:none;}
+  .cta-content{position:relative; z-index:2;
+    max-width:1320px; margin:0 auto; color:var(--ink); text-align:center;}
+  .cta-content .sec-meta{justify-content:center;}
+  .cta-content h2{max-width:760px; color:var(--ink); margin:0 auto 32px;}
+  .cta-content p{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:22px; color:var(--ink-soft); max-width:560px; line-height:1.6;
+    margin:0 auto 40px;}
+  .cta-content .email{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(24px, 3vw, 40px); color:var(--ink);
+    border-bottom:1px solid var(--champagne); padding-bottom:8px;
+    display:inline-block;}
+
+  /* FOOTER */
+  footer{padding:64px 48px 40px; background:var(--bg-deeper); border-top:1px solid var(--line);}
+  .footer-inner{max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns:1.6fr 1fr 1.1fr 1fr; gap:56px;
+    margin-bottom:48px; align-items:start;}
+  .footer-brand-block .footer-brand{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .footer-brand-block .mark{width:56px; height:56px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.15));}
+  .footer-brand-block .name{display:none;}
+  .footer-brand-block p{font-size:13.5px; color:var(--ink-dim); line-height:1.65; max-width:300px;}
+  .footer-col h5{font-family:var(--sans); font-size:11px; font-weight:700;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase; margin:0 0 20px;}
+  .footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:11px;}
+  .footer-col ul li a{font-size:13.5px; color:var(--ink-soft);}
+  .footer-col ul li a:hover{color:var(--champagne-deep);}
+  .footer-bottom{max-width:1320px; margin:0 auto; padding-top:32px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--sans); font-size:11.5px; color:var(--ink-muted);
+    letter-spacing:.05em; flex-wrap:wrap; gap:16px;}
+
+  @media (max-width:1024px){
+    .case-grid, .case-grid.reverse{grid-template-columns:1fr; gap:48px; direction:ltr;}
+    .case-image-wrap{position:relative; top:auto; aspect-ratio:16/9;}
+  }
+  @media (max-width:768px){
+    .nav-inner{padding:0 24px; gap:16px;} .nav-links{display:none;}
+    section, .case{padding:96px 24px;}
+    .footer-inner{grid-template-columns:1fr; gap:40px;}
+    .cta-final{height:auto; padding:96px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav on-dark" id="nav">
+  <div class="nav-inner">
+    <a href="boppartdigital.html" class="nav-brand">
+      <div class="nav-brand-mark">
+      <img src="boppart-logo.png" alt="Boppart Digital">
+    </div>
+      <div>
+        <div class="nav-brand-text">Boppart<span class="tm">™</span></div>
+        <div class="nav-brand-sub">Digital</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="boppartdigital.html">Studio</a>
+      <a href="boppart_about.html">About</a>
+      <a href="boppart_studio.html">Services</a>
+      <a href="boppart_portfolio.html" class="active">Portfolio</a>
+    </div>
+    <a href="mailto:welcome@boppartdigital.com" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <div class="hero-meta-line"></div>
+      <div class="hero-meta-text">Portfolio · Five Ventures · Eight Months</div>
+    </div>
+    <h1>What we've <span class="em">shipped.</span></h1>
+    <p class="hero-sub">Five ventures, each a different vertical, each built solo with the same disciplined stack. The proof we point to when partners ask "what does your work look like?"</p>
+  </div>
+</section>
+
+<!-- AIXXII -->
+<section class="case" id="aixxii">
+  <div class="container">
+    <div class="case-grid">
+      <div>
+        <div class="case-num">01 · Portfolio Anchor</div>
+        <h2 class="case-name">AIXXII</h2>
+        <p class="case-tagline">"The decision layer for the fragmented AI ecosystem."</p>
+
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="label">Vertical</div><div class="value">AI Operating System</div></div>
+          <div class="case-meta-item"><div class="label">Launched</div><div class="value">June 2026</div></div>
+          <div class="case-meta-item"><div class="label">Status</div><div class="value">Live · Growing</div></div>
+        </div>
+
+        <div class="case-text">
+          <p class="lead">An AI tool catalog of 500+ curated platforms, with an intelligent routing engine (DICI) that picks the right tool for your specific goal. Solves the "47 subscriptions, only 30% used" problem at the source.</p>
+          <p>The decision layer thesis: most users don't need more tools — they need a system that picks for them.</p>
+          <p>AIXXII is the flagship venture and the proving ground for everything else in the portfolio. <strong>If we can build a decision layer for AI tools, we can build one for any fragmented market.</strong></p>
+        </div>
+
+                <div class="case-cta">
+          <a href="https://aixxii.com" target="_blank" rel="noopener">Visit AIXXII →</a>
+        </div>
+      </div>
+      <div class="case-image-wrap"><div class="case-image aixxii"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASAFIN -->
+<section class="case alt" id="casafin">
+  <div class="container">
+    <div class="case-grid reverse">
+      <div>
+        <div class="case-num">02 · Family Vertical</div>
+        <h2 class="case-name">CasaFin</h2>
+        <p class="case-tagline">"Swiss Financial OS for the family that wants clarity."</p>
+
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="label">Vertical</div><div class="value">Personal Finance</div></div>
+          <div class="case-meta-item"><div class="label">Launched</div><div class="value">Q2 2026</div></div>
+          <div class="case-meta-item"><div class="label">Status</div><div class="value">Live · 8 Pioneers</div></div>
+        </div>
+
+        <div class="case-text">
+          <p class="lead">A Swiss-built financial operating system for families. AI assistant Fina, multi-account clarity, pillar 3a planning, expense forecasting.</p>
+          <p>Built for the household that has CHF 200k+ in flow but spends weekends in Excel. Replaces the Treuhänder for the small things, supplements them for the big things.</p>
+          <p><strong>Pioneer offer: CHF 199/year for life</strong> — anchoring the first 100 customers as long-term champions.</p>
+        </div>
+
+                <div class="case-cta">
+          <a href="https://casafin.ch" target="_blank" rel="noopener">Visit CasaFin →</a>
+        </div>
+      </div>
+      <div class="case-image-wrap"><div class="case-image casafin"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHICCA -->
+<section class="case" id="chicca">
+  <div class="container">
+    <div class="case-grid">
+      <div>
+        <div class="case-num">03 · Professional Role</div>
+        <h2 class="case-name">CHICCA</h2>
+        <p class="case-tagline">"AI that does the social media manager job."</p>
+
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="label">Vertical</div><div class="value">Social Media AI</div></div>
+          <div class="case-meta-item"><div class="label">Launching</div><div class="value">Summer 2026</div></div>
+          <div class="case-meta-item"><div class="label">Status</div><div class="value">Live · Founder Tier</div></div>
+        </div>
+
+        <div class="case-text">
+          <p class="lead">No prompting. Just clicking. CHICCA replaces the CHF 5'000/month social media manager role — schedules, writes, repurposes, with brand voice and one-click workflows.</p>
+          <p>The thesis: most teams don't need a social media strategist. They need an executor. CHICCA is the executor — and learns their voice as it goes.</p>
+          <p>Positioned against the CHF 5k/month junior SMM, <strong>priced at CHF 19/month founder rate.</strong></p>
+        </div>
+
+                <div class="case-cta">
+          <a href="https://chicca.online" target="_blank" rel="noopener">Visit CHICCA →</a>
+        </div>
+      </div>
+      <div class="case-image-wrap"><div class="case-image chicca"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DREAMNEST -->
+<section class="case alt" id="dreamnest">
+  <div class="container">
+    <div class="case-grid reverse">
+      <div>
+        <div class="case-num">04 · Luxury Network</div>
+        <h2 class="case-name">DreamNest</h2>
+        <p class="case-tagline">"Private off-market luxury real estate."</p>
+
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="label">Vertical</div><div class="value">Luxury Real Estate</div></div>
+          <div class="case-meta-item"><div class="label">Launched</div><div class="value">Q2 2026</div></div>
+          <div class="case-meta-item"><div class="label">Status</div><div class="value">Live · Active Mandates</div></div>
+        </div>
+
+        <div class="case-text">
+          <p class="lead">A curated network for buyers and sellers of CHF 1M+ luxury properties. Membership-based. No public listings. Discretion as product.</p>
+          <p>Built around the insight that the top 1% of real estate transactions never touch public marketplaces. They flow through relationships.</p>
+          <p>Membership-tier access. Discretion as product.</p>
+        </div>
+
+        <div class="case-cta">
+          <a href="https://dreamnest.ch" target="_blank" rel="noopener">Visit DreamNest →</a>
+        </div>
+      </div>
+      <div class="case-image-wrap"><div class="case-image dreamnest"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOVMINDA -->
+<section class="case" id="lovminda">
+  <div class="container">
+    <div class="case-grid">
+      <div>
+        <div class="case-num">05 · Relationship Vertical</div>
+        <h2 class="case-name">LOVMINDA</h2>
+        <p class="case-tagline">"AI that remembers what matters in your relationships."</p>
+
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="label">Vertical</div><div class="value">Relationship AI</div></div>
+          <div class="case-meta-item"><div class="label">Launching</div><div class="value">Q3 2026</div></div>
+          <div class="case-meta-item"><div class="label">Status</div><div class="value">Pre-launch</div></div>
+        </div>
+
+        <div class="case-text">
+          <p class="lead">An AI relationship coach for couples, parents, and busy professionals. Remembers anniversaries, suggests the right move at the right moment, gives advice without judgment.</p>
+          <p>Built around the observation that even busy senior operators forget the small things in their personal lives — birthdays, anniversaries, the right moment to send a thoughtful note.</p>
+          <p>Target launch: CHF 9/month. Free tier forever for single-parent households.</p>
+        </div>
+
+                <div class="case-cta">
+          <a href="#" style="opacity:.5; pointer-events:none;">Launching Q3 →</a>
+        </div>
+      </div>
+      <div class="case-image-wrap"><div class="case-image lovminda"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Build With Us</div>
+    </div>
+    <h2>The next venture <span class="em">might be yours.</span></h2>
+    <p>If what you've seen here resembles what you want to build — let's talk. Platform Studio engagements start at CHF 30k.</p>
+    <a href="mailto:welcome@boppartdigital.com" class="email">welcome@boppartdigital.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <div class="mark"></div>
+        <div class="name">Boppart Digital<span style="font-size:9px; vertical-align:super; color:var(--ink-muted);">™</span></div>
+      </div>
+      <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, senior advisory for those who think long-term.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="boppartdigital.html">Home</a></li>
+        <li><a href="boppart_about.html">About</a></li>
+        <li><a href="boppart_studio.html">Services</a></li>
+        <li><a href="boppart_portfolio.html">Portfolio</a></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:welcome@boppartdigital.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn · Michaela</a></li>
+        <li><a href="https://www.linkedin.com/company/108615759/" target="_blank" rel="noopener">LinkedIn · Boppart Digital</a></li>
+        <li><a href="https://instagram.com/boppartdigital" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://aixxii.com" target="_blank" rel="noopener">AIXXII</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="boppart_imprint.html">Imprint</a></li>
+        <li><a href="boppart_imprint.html#data-protection">Privacy</a></li>
+        <li><a href="boppart_imprint.html#terms">Terms</a></li>
+        <li><a href="boppart_imprint.html#copyright">Copyright</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Boppart Digital · Zürich, Switzerland</span>
+    <span>Designed and built in-house</span>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  if(nav){
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+</script>
+
+</body>
+</html>
