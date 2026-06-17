@@ -21,7 +21,7 @@
   }
   *,*:before,*:after{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+  body{margin:0; overflow-x:hidden; font-family:var(--sans); background:var(--bg); color:var(--ink);
     -webkit-font-smoothing:antialiased; line-height:1.65;}
   a{color:inherit; text-decoration:none;}
   a:hover{color:var(--champagne-deep);}
@@ -141,8 +141,29 @@
       <a href="boppart_portfolio.html">Portfolio</a>
     </div>
     <a href="boppartdigital.html#contact" class="nav-cta">Get in touch</a>
+    <!-- Hamburger button -->
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile fullscreen overlay -->
+<div class="mobile-overlay" id="mobileOverlay">
+  <nav>
+    <a href="boppartdigital.html" data-en="Studio" data-de="Studio">Studio</a>
+    <a href="boppart_about.html" data-en="About" data-de="Über uns">About</a>
+    <a href="boppart_studio.html" data-en="Services" data-de="Leistungen">Services</a>
+    <a href="boppart_portfolio.html" data-en="Portfolio" data-de="Portfolio">Portfolio</a>
+    <a href="boppartdigital.html#contact" data-en="Contact" data-de="Kontakt">Contact</a>
+    <a href="boppartdigital.html#contact" data-en="Get in touch →" data-de="Kontakt aufnehmen →">Get in touch →</a>
+    <div class="mobile-lang">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </nav>
+</div>
+
 
 <main>
   <div class="container">

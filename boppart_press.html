@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Press · Boppart Digital — Michaela Boppart for Media, Speaking, Podcasts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Press kit and speaking inquiries for Michaela Boppart, Founder of Boppart Digital — solo operator studio building five AI ventures from Zürich.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fdfbf7; --bg-soft:#f4f0e8; --bg-deeper:#ebe4d4;
+    --ink:#1a1a1f; --ink-soft:#3a3a44; --ink-dim:#6a6a6a; --ink-muted:#9a9890;
+    --champagne:#b8a468; --champagne-deep:#8a7847;
+    --orange:#d97742; --steel:#5c8aa8;
+    --line:rgba(26,26,31,.1); --line-soft:rgba(26,26,31,.05);
+    --serif:'Fraunces',serif; --display:'Inter Tight',sans-serif; --sans:'Inter',sans-serif;
+  }
+  *,*:before,*:after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased; line-height:1.65;}
+  a{color:inherit; text-decoration:none;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:translateY(0);}}
+  @keyframes slowZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+
+  /* NAV */
+  .nav{position:fixed; top:0; left:0; right:0; z-index:100;
+    background:transparent; padding:28px 0; transition:all .4s;}
+  .nav.scrolled{padding:16px 0; background:rgba(253,251,247,.95);
+    backdrop-filter:blur(24px); border-bottom:1px solid var(--line-soft);}
+  .nav.on-dark .nav-links a, .nav.on-dark .nav-brand-text,
+  .nav.on-dark .nav-cta{color:var(--bg);}
+  .nav.on-dark .nav-cta{border-color:var(--bg);}
+  .nav.on-dark .nav-cta:hover{background:var(--bg); color:var(--ink);}
+  .nav-inner{max-width:1320px; margin:0 auto; padding:0 48px;
+    display:flex; align-items:center; gap:48px;}
+  .nav-brand{display:flex; align-items:center; gap:14px;}
+  .nav-brand-mark{width:64px; height:64px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.30));
+    position:relative; transition:transform .3s;}
+  .nav-brand-mark:hover{transform:scale(1.04);}
+  .nav-brand-mark img{display:none;}
+  .nav-brand-text,.nav-brand-sub{display:none;}
+  .nav.on-dark .nav-brand-mark{filter:drop-shadow(0 2px 14px rgba(0,0,0,.6));}
+  .nav-brand-text{font-family:var(--display); font-weight:500; font-size:20px; letter-spacing:-.02em;}
+  .nav-brand-text .tm{font-size:9px; vertical-align:super; color:var(--ink-muted);}
+  .nav-brand-sub{font-family:var(--sans); font-size:9.5px; font-weight:500;
+    letter-spacing:.35em; color:var(--champagne); text-transform:uppercase; margin-top:2px;}
+  .nav-links{display:flex; gap:36px; flex:1; justify-content:center;}
+  .nav-links a{font-size:13.5px; color:var(--ink-soft); position:relative; letter-spacing:.01em;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active:after{content:""; position:absolute; bottom:-6px; left:0; right:0;
+    height:1px; background:var(--champagne);}
+  .nav-cta{padding:11px 24px; border-radius:100px; background:transparent; border:1px solid var(--ink);
+    color:var(--ink); font-size:12.5px; font-weight:500; letter-spacing:.05em;
+    transition:all .3s; text-transform:uppercase;}
+  .nav-cta:hover{background:var(--ink); color:var(--bg);}
+
+  /* HERO */
+  .hero{position:relative; height:70vh; min-height:580px;
+    display:flex; align-items:flex-end; padding:0 0 100px; overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; z-index:0;
+    background:url('about-hero.jpg') center/cover no-repeat, linear-gradient(135deg,#1a1a1f 0%,#3a3a44 100%);
+    animation:slowZoom 14s ease-out forwards;}
+  .hero-bg:after{content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(26,26,31,.4) 0%, rgba(26,26,31,.6) 60%, rgba(26,26,31,.95) 100%);}
+  .hero-content{position:relative; z-index:2; max-width:1320px; width:100%;
+    margin:0 auto; padding:0 48px; color:var(--bg); animation:fadeUp 1.5s .3s both;}
+  .hero-meta{display:flex; align-items:center; gap:14px; margin-bottom:32px;}
+  .hero-meta-line{width:36px; height:1px; background:var(--champagne);}
+  .hero-meta-text{font-family:var(--sans); font-size:11.5px; color:var(--champagne);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:500;}
+  h1{font-family:var(--display); font-weight:200;
+    font-size:clamp(48px, 7vw, 110px); line-height:.95; letter-spacing:-.045em;
+    margin:0 0 32px; max-width:1100px; color:var(--bg);}
+  h1 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .hero-sub{font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:clamp(18px, 1.4vw, 22px); color:var(--bg-soft); max-width:680px;
+    line-height:1.5; margin:0;}
+
+  /* SECTION */
+  section{position:relative; padding:160px 48px;}
+  .container{max-width:1320px; margin:0 auto;}
+  .container-narrow{max-width:980px; margin:0 auto;}
+  .sec-meta{display:flex; align-items:center; gap:14px; margin-bottom:40px;}
+  .sec-meta-line{width:24px; height:1px; background:var(--champagne);}
+  .sec-meta-text{font-family:var(--sans); font-size:11px; color:var(--champagne-deep);
+    letter-spacing:.3em; text-transform:uppercase; font-weight:600;}
+  h2{font-family:var(--display); font-weight:200;
+    font-size:clamp(36px, 5vw, 72px); line-height:1.05; letter-spacing:-.035em;
+    margin:0 0 32px;}
+  h2 .em{font-family:var(--serif); font-style:italic; color:var(--champagne); font-weight:400;}
+  .sec-sub{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(18px, 1.3vw, 21px); color:var(--ink-soft); line-height:1.6;
+    max-width:720px; margin:0 0 64px;}
+
+  /* CONTACT BLOCKS */
+  .contact-options{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    margin-bottom:80px;}
+  .contact-card{padding:40px 36px; background:var(--bg-soft);
+    transition:all .3s; cursor:pointer;}
+  .contact-card:hover{background:var(--bg-deeper); transform:translateY(-4px);}
+  .contact-card .label{font-family:var(--sans); font-size:11px;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase;
+    margin-bottom:16px; font-weight:600;}
+  .contact-card h4{font-family:var(--display); font-weight:400; font-size:24px;
+    margin:0 0 12px; letter-spacing:-.01em;}
+  .contact-card p{font-size:14.5px; color:var(--ink-soft); line-height:1.65; margin:0 0 24px;}
+  .contact-card a{font-family:var(--serif); font-style:italic; font-size:17px;
+    color:var(--champagne-deep); border-bottom:1px solid var(--champagne);
+    padding-bottom:2px;}
+
+  /* BIO BLOCKS */
+  .bio-section{background:var(--bg-soft); padding:160px 48px;}
+  .bio-versions{display:grid; gap:64px;}
+  .bio-block{padding:48px 0; border-top:1px solid var(--line);}
+  .bio-block:last-child{border-bottom:1px solid var(--line);}
+  .bio-block-head{display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:24px; flex-wrap:wrap; gap:16px;}
+  .bio-block-head h3{font-family:var(--display); font-weight:400; font-size:24px;
+    margin:0; letter-spacing:-.01em;}
+  .bio-word-count{font-family:var(--sans); font-size:11px; color:var(--ink-muted);
+    letter-spacing:.2em; text-transform:uppercase; font-weight:500;}
+  .bio-block .bio-text{padding:24px 0; background:var(--bg);
+    border-left:2px solid var(--champagne); padding-left:24px;
+    margin-bottom:16px;}
+  .bio-block .bio-text p{font-size:16px; line-height:1.7; color:var(--ink-soft);
+    margin:0 0 12px; font-weight:400;}
+  .bio-block .bio-text p:last-child{margin-bottom:0;}
+  .bio-block .copy-btn{font-family:var(--sans); padding:10px 20px; border-radius:100px;
+    background:var(--ink); color:var(--bg); font-size:11px; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase; border:none; cursor:pointer;
+    transition:all .2s;}
+  .bio-block .copy-btn:hover{background:var(--champagne-deep);}
+
+  /* SPEAKING TOPICS */
+  .speaking{padding:160px 48px;}
+  .topics-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:32px;
+    margin-top:64px;}
+  .topic-card{padding:48px 40px; background:var(--bg-soft);
+    transition:all .3s;}
+  .topic-card:hover{background:var(--bg-deeper);}
+  .topic-num{font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:18px; color:var(--champagne); letter-spacing:.1em; margin-bottom:24px;}
+  .topic-card h4{font-family:var(--display); font-weight:400; font-size:26px;
+    letter-spacing:-.015em; margin:0 0 18px; color:var(--ink);}
+  .topic-card .duration{font-family:var(--sans); font-size:11px; color:var(--ink-muted);
+    letter-spacing:.2em; text-transform:uppercase; margin-bottom:20px; font-weight:500;}
+  .topic-card p{font-size:15px; line-height:1.7; color:var(--ink-soft);
+    margin:0; font-weight:400;}
+
+  /* FACTS */
+  .facts{background:var(--bg); padding:160px 48px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .facts-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:64px;
+    max-width:1080px; margin:0 auto;}
+  .fact-row{display:grid; grid-template-columns:160px 1fr; gap:32px;
+    padding:24px 0; border-bottom:1px solid var(--line);}
+  .fact-label{font-family:var(--sans); font-size:11.5px; color:var(--ink-muted);
+    letter-spacing:.18em; text-transform:uppercase; font-weight:600;}
+  .fact-value{font-family:var(--display); font-weight:400; font-size:17px;
+    color:var(--ink); letter-spacing:-.005em;}
+
+  /* CTA */
+  .press-cta{text-align:center; padding:200px 48px;}
+  .press-cta h2{margin-bottom:48px;}
+  .press-cta .email{font-family:var(--serif); font-weight:300; font-style:italic;
+    font-size:clamp(28px, 4vw, 52px); color:var(--champagne-deep);
+    border-bottom:1px solid var(--champagne); padding-bottom:12px; display:inline-block;}
+  .press-cta p{font-family:var(--sans); font-size:13px; color:var(--ink-muted);
+    letter-spacing:.2em; text-transform:uppercase; margin-top:32px; font-weight:500;}
+
+  /* FOOTER */
+  footer{padding:64px 48px 40px; background:var(--bg-deeper); border-top:1px solid var(--line);}
+  .footer-inner{max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns:1.6fr 1fr 1.1fr 1fr; gap:56px;
+    margin-bottom:48px; align-items:start;}
+  .footer-brand-block .footer-brand{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .footer-brand-block .mark{width:56px; height:56px; flex-shrink:0;
+    background:url('boppart-logo.png') no-repeat center / contain;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.15));}
+  .footer-brand-block .name{font-family:var(--display); font-weight:500; font-size:18px;}
+  .footer-brand-block p{font-size:13.5px; color:var(--ink-dim); line-height:1.65; max-width:300px;}
+  .footer-col h5{font-family:var(--sans); font-size:11px; font-weight:700;
+    color:var(--champagne-deep); letter-spacing:.25em; text-transform:uppercase; margin:0 0 20px;}
+  .footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:11px;}
+  .footer-col ul li a{font-size:13.5px; color:var(--ink-soft);}
+  .footer-col ul li a:hover{color:var(--champagne-deep);}
+  .footer-bottom{max-width:1320px; margin:0 auto; padding-top:32px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--sans); font-size:11.5px; color:var(--ink-muted);
+    letter-spacing:.05em; flex-wrap:wrap; gap:16px;}
+
+  @media (max-width:1024px){
+    .contact-options, .topics-grid, .facts-grid{grid-template-columns:1fr; gap:32px;}
+  }
+  @media (max-width:768px){
+    .nav-inner{padding:0 24px; gap:16px;} .nav-links{display:none;}
+    section, .bio-section, .speaking, .facts{padding:96px 24px;}
+    .press-cta{padding:120px 24px;}
+    .footer-inner{grid-template-columns:1fr; gap:40px;}
+    .fact-row{grid-template-columns:1fr; gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav on-dark" id="nav">
+  <div class="nav-inner">
+    <a href="boppartdigital.html" class="nav-brand">
+      <div class="nav-brand-mark">
+      <img src="boppart-logo.png" alt="Boppart Digital">
+    </div>
+      <div>
+        <div class="nav-brand-text">Boppart<span class="tm">™</span></div>
+        <div class="nav-brand-sub">Digital</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="boppartdigital.html">Studio</a>
+      <a href="boppart_about.html">About</a>
+      <a href="boppart_studio.html">Services</a>
+      <a href="boppart_portfolio.html">Portfolio</a>
+    </div>
+    <a href="mailto:welcome@boppartdigital.ch" class="nav-cta">Media Inquiry</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <div class="hero-meta-line"></div>
+      <div class="hero-meta-text">Press · Speaking · Media</div>
+    </div>
+    <h1>For journalists,<br>and the <span class="em">curious.</span></h1>
+    <p class="hero-sub">Everything you need to write about Boppart Digital — bios, facts, contact, and speaking topics. Press kit available on request.</p>
+  </div>
+</section>
+
+<!-- CONTACT OPTIONS -->
+<section>
+  <div class="container">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">How to reach us</div>
+    </div>
+    <h2>Three <span class="em">channels.</span></h2>
+    <p class="sec-sub">For media inquiries, podcast bookings, or speaking requests — choose the route that fits.</p>
+
+    <div class="contact-options">
+
+      <div class="contact-card">
+        <div class="label">Press · Media</div>
+        <h4>For journalists.</h4>
+        <p>Interview requests, quote requests for articles, fact-checking — all welcome. Quick turnaround.</p>
+        <a href="mailto:welcome@boppartdigital.ch">welcome@boppartdigital.ch</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="label">Podcast · Speaking</div>
+        <h4>For producers.</h4>
+        <p>Podcast bookings, conference speaking, panel invitations. DACH primary, English/German available.</p>
+        <a href="mailto:welcome@boppartdigital.ch">welcome@boppartdigital.ch</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="label">Direct · Personal</div>
+        <h4>For relationships.</h4>
+        <p>Operators, founders, builders who want to connect directly — without the gatekeeping. .</p>
+        <a href="mailto:welcome@boppartdigital.ch">welcome@boppartdigital.ch</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BIOS -->
+<section class="bio-section">
+  <div class="container-narrow">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Ready-to-Use Bios</div>
+    </div>
+    <h2>Three lengths.<br><span class="em">Use as needed.</span></h2>
+    <p class="sec-sub">Copy and paste — for the introduction at the panel, the byline at the article, or the speaker page.</p>
+
+    <div class="bio-versions">
+
+      <div class="bio-block">
+        <div class="bio-block-head">
+          <h3>Short Bio</h3>
+          <span class="bio-word-count">~30 words</span>
+        </div>
+        <div class="bio-text">
+          <p>Michaela Boppart is the Founder of Boppart Digital — a Zürich-based AI Operating Studio. She has spent 24 years in finance, founded five ventures, and now builds AI platforms for select partners across Swiss SMEs and international groups.</p>
+        </div>
+      </div>
+
+      <div class="bio-block">
+        <div class="bio-block-head">
+          <h3>Medium Bio</h3>
+          <span class="bio-word-count">~90 words</span>
+        </div>
+        <div class="bio-text">
+          <p>Michaela Boppart is a 24-year finance veteran and serial founder. Based in Zürich, she co-founded her first company — Primetime Creative Group — in 2003 and ran finance and operations for live productions reaching 50'000 people over twelve years.</p>
+          <p>She founded Boppart Digital in 2022 as a senior finance practice for Swiss SMEs and international groups. In 2025 she founded AIXXII, her first AI venture. Boppart Digital now operates as an AI Operating Studio with five ventures across the portfolio.</p>
+        </div>
+      </div>
+
+      <div class="bio-block">
+        <div class="bio-block-head">
+          <h3>Long Bio</h3>
+          <span class="bio-word-count">~210 words</span>
+        </div>
+        <div class="bio-text">
+          <p>Michaela Boppart is the Founder of Boppart Digital — a Zürich-based AI Operating Studio she established in 2022. The studio now owns five active ventures: AIXXII, CasaFin, CHICCA, DreamNest, and LOVMINDA.</p>
+          <p>Michaela began her finance career in 2001. Two years later she co-founded Primetime Creative Group, where she ran finance, payroll, and operations for twelve years across large-scale live productions reaching audiences of up to 50'000 — concerts, corporate events, cultural productions involving international artists and global brands.</p>
+          <p>Between 2016 and 2022 she held senior finance roles at two Swiss institutions: Head of AP/AR at a Zürich-based financial services group, then Head of AP and Financial Process Optimization at a leading materials research institute in Dübendorf. Her work centered on ERP optimization, process digitalization, and end-to-end workflow automation across procure-to-pay.</p>
+          <p>Boppart Digital takes on select Platform Studio engagements and AI Consulting projects. Michaela writes regularly on LinkedIn about senior operator economics, AI in finance, and the next decade of corporate finance operations. She is available for speaking engagements across DACH in English and German.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING TOPICS -->
+<section class="speaking">
+  <div class="container">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Speaking Topics</div>
+    </div>
+    <h2>Four talks. <span class="em">Each tested.</span></h2>
+    <p class="sec-sub">Topics Michaela speaks on — for conferences, podcasts, internal company events. Keynote (45 min) or fireside (60 min). DACH or remote.</p>
+
+    <div class="topics-grid">
+
+      <div class="topic-card">
+        <div class="topic-num">Talk One</div>
+        <h4>The Solo Operator Studio</h4>
+        <div class="duration">Keynote · 30–45 minutes</div>
+        <p>Why building five products solo beats raising venture capital for the wrong reasons. The economics, the time math, the unfair advantages of disciplined burn. Includes a real-time portfolio audit of Boppart Digital.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-num">Talk Two</div>
+        <h4>AI for Senior Finance Teams</h4>
+        <div class="duration">Workshop · 60–90 minutes</div>
+        <p>What corporate finance taught me about AI tool selection. Practical frameworks for evaluating AI in regulated environments. How to integrate AI without breaking SAP. Includes audit templates and tool selection matrices.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-num">Talk Three</div>
+        <h4>Building While Working</h4>
+        <div class="duration">Fireside · 45–60 minutes</div>
+        <p>For senior employees considering side ventures. How to start, what to tell your boss, what to keep separate. Legal and ethical frameworks. Real numbers from the Boppart Digital journey — including how I told mine.</p>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-num">Talk Four</div>
+        <h4>The Decision Layer Thesis</h4>
+        <div class="duration">Keynote · 30 minutes</div>
+        <p>Why the next decade of consumer AI is not more tools but better routing. Drawing from the AIXXII playbook. Applicable to any fragmented market — finance, healthcare, education, legal.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="facts">
+  <div class="container">
+    <div class="sec-meta">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">Quick Facts · For Fact-Checkers</div>
+    </div>
+    <h2>The <span class="em">facts.</span></h2>
+
+    <div class="facts-grid">
+      <div>
+        <div class="fact-row"><div class="fact-label">Name</div><div class="fact-value">Michaela Boppart</div></div>
+        <div class="fact-row"><div class="fact-label">Title</div><div class="fact-value">Founder & CEO, Boppart Digital</div></div>
+        <div class="fact-row"><div class="fact-label">Based In</div><div class="fact-value">Zürich, Switzerland</div></div>
+        <div class="fact-row"><div class="fact-label">Languages</div><div class="fact-value">German (native), English (fluent), Swiss-German</div></div>
+        <div class="fact-row"><div class="fact-label">Years in Finance</div><div class="fact-value">24 (since 2001)</div></div>
+        <div class="fact-row"><div class="fact-label">First Co-Founder Role</div><div class="fact-value">2003 — Primetime Creative Group</div></div>
+      </div>
+      <div>
+        <div class="fact-row"><div class="fact-label">Ventures Active</div><div class="fact-value">5 (AIXXII, CasaFin, CHICCA, DreamNest, LOVMINDA)</div></div>
+        <div class="fact-row"><div class="fact-label">Stack Specialty</div><div class="fact-value">Multi-entity, AP/AR, ERP transformation, payroll</div></div>
+        <div class="fact-row"><div class="fact-label">Largest Audience Operated</div><div class="fact-value">50'000 (live productions)</div></div>
+        <div class="fact-row"><div class="fact-label">Boppart Digital Founded</div><div class="fact-value">October 2022</div></div>
+        <div class="fact-row"><div class="fact-label">Outside Funding</div><div class="fact-value">None · Self-funded</div></div>
+        <div class="fact-row"><div class="fact-label">2029 Target</div><div class="fact-value">CHF 100M aggregated valuation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="press-cta">
+  <div class="container-narrow">
+    <div class="sec-meta" style="justify-content:center;">
+      <div class="sec-meta-line"></div>
+      <div class="sec-meta-text">For Press</div>
+    </div>
+    <h2>Reach out <span class="em">directly.</span></h2>
+    <a href="mailto:welcome@boppartdigital.ch" class="email">welcome@boppartdigital.ch</a>
+    <p>Usually replies within 24 hours · DACH timezone</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <div class="mark"></div>
+        <div class="name">Boppart Digital<span style="font-size:9px; vertical-align:super; color:var(--ink-muted);">™</span></div>
+      </div>
+      <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, senior advisory for those who think long-term.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="boppartdigital.html">Home</a></li>
+        <li><a href="boppart_about.html">About</a></li>
+        <li><a href="boppart_studio.html">Services</a></li>
+        <li><a href="boppart_portfolio.html">Portfolio</a></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:welcome@boppartdigital.ch">Direct</a></li>
+        <li><a href="mailto:welcome@boppartdigital.ch">Press</a></li>
+        <li><a href="mailto:welcome@boppartdigital.ch">Speaking</a></li>
+        <li><a href="https://www.linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn · Michaela</a></li>
+        <li><a href="https://www.linkedin.com/company/108615759/" target="_blank" rel="noopener">LinkedIn · Boppart Digital</a></li>
+        <li><a href="https://instagram.com/boppartdigital" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="boppart_imprint.html">Imprint</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Boppart Digital · Zürich, Switzerland</span>
+    <span>Designed and built in-house</span>
+  </div>
+</footer>
+<script>
+  const nav = document.getElementById('nav');
+  if(nav){
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+</script>
+
+</body>
+</html>
