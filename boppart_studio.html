@@ -325,10 +325,10 @@
   <div class="hero-content">
     <div class="hero-meta">
       <div class="hero-meta-line"></div>
-      <div class="hero-meta-text">Services · Two Practices</div>
+      <div class="hero-meta-text" data-en="Services · Two Practices" data-de="Leistungen · Zwei Praxen">Services · Two Practices</div>
     </div>
-    <h1>The bridge between today<br>and <span class="accent">the future.</span></h1>
-    <p class="hero-sub">We don't write strategy decks. We don't build websites. We build self-running operations — tailored to your business, operating without you.</p>
+    <h1 data-en-html="The bridge between today<br>and <span class=&quot;accent&quot;>the future.</span>" data-de-html="Die Brücke zwischen heute<br>und <span class=&quot;accent&quot;>der Zukunft.</span>">The bridge between today<br>and <span class="accent">the future.</span></h1>
+    <p class="hero-sub" data-en="We don't write strategy decks. We don't build websites. We advise finance teams. We build self-running operations — tailored to your business, operating without you." data-de="Wir schreiben keine Strategie-Decks. Wir bauen keine Websites. Wir beraten Finance Teams. Wir bauen selbstlaufende Prozesse — massgeschneidert, die auch ohne dich funktionieren.">We don't write strategy decks. We don't build websites. We advise finance teams. We build self-running operations — tailored to your business, operating without you.</p>
   </div>
 </section>
 
@@ -711,23 +711,3 @@
       if(txt !== null) el.textContent = txt;
     });
     document.querySelectorAll('[data-en-html]').forEach(el => {
-      const html = el.getAttribute('data-' + lang + '-html');
-      if(html !== null) el.innerHTML = html;
-    });
-    document.querySelectorAll('.lang-toggle button').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-    });
-    try { localStorage.setItem('bopplang', lang); } catch(e){}
-    document.documentElement.lang = lang;
-  }
-  document.querySelectorAll('.lang-toggle button').forEach(b => {
-    b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
-  });
-  try {
-    const saved = localStorage.getItem('bopplang');
-    if(saved === 'de') setLang('de');
-  } catch(e){}
-</script>
-
-</body>
-</html>
