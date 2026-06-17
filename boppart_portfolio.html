@@ -225,12 +225,17 @@
       </div>
     </a>
     <div class="nav-links">
-      <a href="boppartdigital.html">Studio</a>
+      <a href="boppartdigital.html" data-en="Studio" data-de="Studio">Studio</a>
       <a href="boppart_about.html">About</a>
-      <a href="boppart_studio.html">Services</a>
-      <a href="boppart_portfolio.html" class="active">Portfolio</a>
+      <a href="boppart_studio.html" data-en="Services" data-de="Leistungen">Services</a>
+      <a href="boppart_portfolio.html" class="active" data-en="Portfolio" data-de="Portfolio">Portfolio</a>
     </div>
-    <a href="boppartdigital.html#contact" class="nav-cta">Get in touch</a>
+    <div class="lang-toggle">
+      <button data-lang="en" class="active">EN</button>
+      <span class="sep">·</span>
+      <button data-lang="de">DE</button>
+    </div>
+    <a href="boppartdigital.html#contact" class="nav-cta" data-en="Get in touch" data-de="Kontakt aufnehmen">Get in touch</a>
     <!-- Hamburger button -->
     <button class="nav-burger" id="navBurger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -443,7 +448,7 @@
       <p>An AI Operating Studio from Zürich. Five ventures owned, platforms built for select partners, senior advisory for those who think long-term.</p>
     </div>
     <div class="footer-col">
-      <h5>Studio</h5>
+      <h5 data-en="Studio" data-de="Studio">Studio</h5>
       <ul>
         <li><a href="boppartdigital.html">Home</a></li>
         <li><a href="boppart_about.html">About</a></li>
@@ -453,7 +458,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Connect</h5>
+      <h5 data-en="Connect" data-de="Kontakt">Connect</h5>
       <ul>
         <li><a href="mailto:welcome@boppartdigital.ch">Email</a></li>
         <li><a href="https://www.linkedin.com/in/michaela-boppart-21653552/" target="_blank" rel="noopener">LinkedIn · Michaela</a></li>
@@ -463,11 +468,11 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Legal</h5>
+      <h5 data-en="Legal" data-de="Rechtliches">Legal</h5>
       <ul>
-        <li><a href="boppart_imprint.html">Imprint</a></li>
-        <li><a href="boppart_imprint.html#data-protection">Privacy</a></li>
-        <li><a href="boppart_imprint.html#terms">Terms</a></li>
+        <li><a href="boppart_imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a></li>
+        <li><a href="boppart_imprint.html#data-protection" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+        <li><a href="boppart_imprint.html#terms" data-en="Terms" data-de="AGB">Terms</a></li>
         <li><a href="boppart_imprint.html#copyright">Copyright</a></li>
       </ul>
     </div>
@@ -485,6 +490,33 @@
       else nav.classList.remove('scrolled');
     });
   }
+</script>
+
+
+<script>
+  // i18n DE/EN toggle (full page)
+  function setLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if(txt !== null) el.textContent = txt;
+    });
+    document.querySelectorAll('[data-en-html]').forEach(el => {
+      const html = el.getAttribute('data-' + lang + '-html');
+      if(html !== null) el.innerHTML = html;
+    });
+    document.querySelectorAll('.lang-toggle button, .mobile-lang button').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('bopplang', lang); } catch(e){}
+    document.documentElement.lang = lang;
+  }
+  document.querySelectorAll('.lang-toggle button, .mobile-lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
+  });
+  try {
+    const saved = localStorage.getItem('bopplang');
+    if(saved === 'de') setLang('de');
+  } catch(e){}
 </script>
 
 </body>
