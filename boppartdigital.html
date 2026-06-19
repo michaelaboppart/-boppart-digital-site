@@ -607,7 +607,7 @@
         <div class="venture-row-meta"><span>dreamnest.ch</span><span class="venture-row-arrow">→</span></div>
       </a>
 
-      <a href="#" class="venture-row">
+      <a href="#contact" class="venture-row">
         <div class="venture-row-num">05</div>
         <div class="venture-row-name">LOVMINDA</div>
         <div class="venture-row-desc">AI that remembers what matters in your relationships. Built with care, for couples and families.</div>
@@ -615,66 +615,6 @@
       </a>
 
     </div>
-  </div>
-</section>
-
-<!-- ===== VISUAL STRIP ===== -->
-<section class="visual-strip" id="portfolio">
-  <div class="visual-strip-head">
-    <div class="sec-meta" style="justify-content:center;">
-      <div class="sec-meta-line"></div>
-      <div class="sec-meta-text">Our Portfolio</div>
-    </div>
-    <h2 style="font-size:clamp(32px, 4vw, 56px);">The ventures <span class="em">we built.</span></h2>
-    <p style="font-family:var(--serif); font-style:italic; font-weight:300; font-size:18px; color:var(--ink-soft); margin-top:24px; max-width:680px; margin-left:auto; margin-right:auto;">Five AI ventures, each operating without us. Same playbook we'd build for you.</p>
-  </div>
-
-  <div class="venture-grid">
-    <a href="https://aixxii.com" target="_blank" class="venture-card v-aixxii">
-      <div class="venture-bg"></div>
-      <div class="venture-content">
-        <div class="venture-tag">01 — AI Operating System</div>
-        <h3>AIXXII</h3>
-        <p>Decision intelligence, 500+ curated tools, autonomous agents. The flagship.</p>
-        <div class="venture-link">aixxii.com →</div>
-      </div>
-    </a>
-    <a href="https://casafin.ch" target="_blank" class="venture-card v-casafin">
-      <div class="venture-bg"></div>
-      <div class="venture-content">
-        <div class="venture-tag">02 — Swiss Financial OS</div>
-        <h3>CasaFin</h3>
-        <p>"Endlich Überblick über dein Geld." AI assistant Fina, live beta.</p>
-        <div class="venture-link">casafin.ch →</div>
-      </div>
-    </a>
-    <a href="https://chicca.online" target="_blank" class="venture-card v-chicca">
-      <div class="venture-bg"></div>
-      <div class="venture-content">
-        <div class="venture-tag">03 — Social Media Manager</div>
-        <h3>CHICCA</h3>
-        <p>Replaces the social media manager job. No prompting, just clicking.</p>
-        <div class="venture-link">chicca.online →</div>
-      </div>
-    </a>
-    <a href="https://dreamnest.ch" target="_blank" class="venture-card v-dreamnest">
-      <div class="venture-bg"></div>
-      <div class="venture-content">
-        <div class="venture-tag">04 — Off-Market Real Estate</div>
-        <h3>DreamNest</h3>
-        <p>Private luxury network for CHF 1M+ properties. Members-only.</p>
-        <div class="venture-link">dreamnest.ch →</div>
-      </div>
-    </a>
-    <a href="#contact" class="venture-card v-lovminda">
-      <div class="venture-bg"></div>
-      <div class="venture-content">
-        <div class="venture-tag">05 — Coming 2026</div>
-        <h3>LOVMINDA</h3>
-        <p>AI love coach & life organizer. Important dates, relationship advice, daily planning.</p>
-        <div class="venture-link">Launch soon →</div>
-      </div>
-    </a>
   </div>
 </section>
 
@@ -801,7 +741,7 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Boppart Digital &middot; Zurich, Switzerland</span>
-    <span data-en="<span data-en="Designed and built in-house" data-de="Inhouse entworfen und gebaut">Designed and built in-house</span>" data-de="Inhouse entworfen und gebaut">Designed and built in-house</span>
+    <span data-en="Designed and built in-house" data-de="Inhouse entworfen und gebaut">Designed and built in-house</span>
   </div>
 </footer>
 
@@ -829,13 +769,13 @@
       const html = el.getAttribute('data-' + lang + '-html');
       if(html !== null) el.innerHTML = html;
     });
-    document.querySelectorAll('.lang-toggle button').forEach(b => {
+    document.querySelectorAll('.lang-toggle button, .mobile-lang button').forEach(b => {
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
     try { localStorage.setItem('bopplang', lang); } catch(e){}
     document.documentElement.lang = lang;
   }
-  document.querySelectorAll('.lang-toggle button').forEach(b => {
+  document.querySelectorAll('.lang-toggle button, .mobile-lang button').forEach(b => {
     b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
   });
   try {
